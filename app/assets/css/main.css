@@ -3,6 +3,39 @@
 
 @source "../../../content/**/*";
 
+@theme static {
+  /* Override default green color */
+--color-green-50: #f5f8f6;
+--color-green-100: #dee9e4;
+--color-green-200: #bcd3c8;
+--color-green-300: #93b5a7;
+--color-green-400: #6c9585;
+--color-green-500: #537b6c;
+--color-green-600: #406155;
+--color-green-700: #364f46;
+--color-green-800: #2e413b;
+--color-green-900: #293833;
+--color-green-950: #141f1b;
+
+--color-pink-50: #fff1f5;
+--color-pink-100: #ffe3eb;
+--color-pink-200: #ffd4e1;
+--color-pink-300: #ffa2bf;
+--color-pink-400: #fe6e9d;
+--color-pink-500: #f83b7e;
+--color-pink-600: #e5196b;
+--color-pink-700: #c20e5a;
+--color-pink-800: #a20f52;
+--color-pink-900: #8a114c;
+--color-pink-950: #4d0425;
+}
+
 @theme {
   --font-sans: 'Public Sans', sans-serif;
+  --container-8xl: 90rem;
+}
+
+:root {
+  --ui-container: var(--container-8xl);
+  --ui-header-height: --spacing(20);
 }

@@ -1,66 +1,82 @@
 <script setup lang="ts">
-const nuxtApp = useNuxtApp()
-const { activeHeadings, updateHeadings } = useScrollspy()
-
 const items = computed(() => [{
-  label: 'Features',
-  to: '#features',
-  active: activeHeadings.value.includes('features') && !activeHeadings.value.includes('pricing')
+  label: 'Rezepte',
+  icon: 'i-lucide-chef-hat',
+  to: '/r'
 }, {
-  label: 'Pricing',
-  to: '#pricing',
-  active: activeHeadings.value.includes('pricing')
+  label: 'Kategorien',
+  icon: 'i-lucide-layout-grid',
+  children: [
+    {
+      label: 'Meal Prep',
+      description: 'Vorkochen für die Woche',
+      icon: 'i-lucide-calendar',
+      to: '/r/meal-prep'
+    },
+    {
+      label: 'Muskelaufbau',
+      description: 'Proteinreiche Gerichte',
+      icon: 'i-lucide-dumbbell',
+      to: '/r/muskel-aufbau'
+    },
+    {
+      label: 'Abnehmen',
+      description: 'Kalorienarme Rezepte',
+      icon: 'i-lucide-scale',
+      to: '/r/abnehmen'
+    },
+    {
+      label: 'Vegetarisch',
+      description: 'Fleischfreie Gerichte',
+      icon: 'i-lucide-leaf',
+      to: '/r/vegetarisch'
+    }
+  ]
 }, {
-  label: 'Testimonials',
-  to: '#testimonials',
-  active: activeHeadings.value.includes('testimonials') && !activeHeadings.value.includes('pricing')
+  label: 'Über uns',
+  icon: 'i-lucide-users',
+  to: '/ueber-uns'
 }])
-
-nuxtApp.hooks.hookOnce('page:finish', () => {
-  updateHeadings([
-    document.querySelector('#features'),
-    document.querySelector('#pricing'),
-    document.querySelector('#testimonials')
-  ].filter(Boolean) as Element[])
-})
 </script>
 
 <template>
-  <UHeader>
-    <template #left>
-      <NuxtLink to="/">
-        <AppLogo class="w-auto h-6 shrink-0" />
-      </NuxtLink>
-    </template>
+  <UContainer>
+    <UHeader :ui="{ root: 'border-none bg-none text-white', container: 'bg-primary rounded-2xl mt-4 max-w-none sm:px-6 lg:px-8' }">
+      <template #left>
+        <NuxtLink to="/">
+          <AppLogo class="w-auto h-10 shrink-0" />
+        </NuxtLink>
+      </template>
 
-    <template #right>
-      <UNavigationMenu
-        :items="items"
-        variant="link"
-        class="hidden lg:block"
-      />
+      <template #default>
+        <UNavigationMenu
+          :items="items"
+          :ui="{
+            link: 'text-lg text-white [&[aria-current=page]]:text-primary [&[aria-current=page]]:before:bg-white data-[state=open]:text-white hover:text-white data-[state=open]:before:bg-primary-400 hover:before:bg-primary-400',
+            linkLeadingIcon: 'text-current group-hover:text-current group-data-[state=open]:text-current'
+          }"
+          variant="pill"
+          color="primary"
+          class="hidden lg:block"
+        />
+      </template>
 
-      <UButton
-        label="Download App"
-        variant="subtle"
-        class="hidden lg:block"
-      />
+      <template #right>
+        <UContentSearchButton
+          :collapsed="false"
+          size="lg"
+          variant="soft"
+          class="md:w-56"
+        />
+      </template>
 
-      <UColorModeButton />
-    </template>
-
-    <template #body>
-      <UNavigationMenu
-        :items="items"
-        orientation="vertical"
-        class="-mx-2.5"
-      />
-      <UButton
-        class="mt-4"
-        label="Download App"
-        variant="subtle"
-        block
-      />
-    </template>
-  </UHeader>
+      <template #body>
+        <UNavigationMenu
+          :items="items"
+          orientation="vertical"
+          class="-mx-2.5"
+        />
+      </template>
+    </UHeader>
+  </UContainer>
 </template>

@@ -51,8 +51,7 @@ function onSubmit() {
 
 <template>
   <USeparator
-    icon="i-simple-icons-nuxtdotjs"
-    class="h-px"
+    class="h-px mt-16 md:mt-20"
   />
 
   <UFooter :ui="{ top: 'border-b border-default' }">
