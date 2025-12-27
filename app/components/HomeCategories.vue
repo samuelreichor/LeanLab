@@ -4,29 +4,25 @@ const categories = [
     slug: 'meal-prep',
     label: 'Meal Prep',
     description: 'Vorkochen für die ganze Woche',
-    icon: 'i-lucide-calendar',
-    color: 'bg-blue-500'
+    icon: 'i-lucide-calendar'
   },
   {
     slug: 'muskel-aufbau',
     label: 'Muskelaufbau',
     description: 'Proteinreiche Gerichte',
-    icon: 'i-lucide-dumbbell',
-    color: 'bg-red-500'
+    icon: 'i-lucide-dumbbell'
   },
   {
     slug: 'abnehmen',
     label: 'Abnehmen',
     description: 'Kalorienarme Rezepte',
-    icon: 'i-lucide-scale',
-    color: 'bg-green-500'
+    icon: 'i-lucide-scale'
   },
   {
     slug: 'vegetarisch',
     label: 'Vegetarisch',
     description: 'Fleischfreie Gerichte',
-    icon: 'i-lucide-leaf',
-    color: 'bg-emerald-500'
+    icon: 'i-lucide-leaf'
   }
 ]
 </script>
@@ -46,15 +42,10 @@ const categories = [
           class="group"
         >
           <div class="bg-white dark:bg-neutral-900 rounded-2xl p-4 lg:p-6 h-full border border-neutral-200 dark:border-neutral-800 transition-all hover:-translate-y-1">
-            <div
-              :class="[
-                'w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center mb-3 lg:mb-4 text-white',
-                category.color
-              ]"
-            >
+            <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-3 lg:mb-4">
               <UIcon
                 :name="category.icon"
-                class="w-5 h-5 lg:w-6 lg:h-6"
+                class="w-5 h-5 lg:w-6 lg:h-6 text-primary"
               />
             </div>
 

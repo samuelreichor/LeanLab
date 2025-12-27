@@ -234,10 +234,9 @@ useSeoMeta({
       <div class="lg:col-span-3">
         <!-- Hero Header -->
         <div class="mb-10">
-          <h1 class="text-4xl md:text-5xl/14 font-bold mb-8">
-            Protein-Rezepte, die
-            <br>
-            <span class="text-primary relative underline decoration-wavy decoration-pink-200 underline-offset-8 decoration-6">
+          <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-6">
+            Protein-Rezepte, die <br>
+            <span class="text-primary relative underline decoration-wavy decoration-pink-200 underline-offset-8 decoration-4">
               wirklich schmecken.
             </span>
           </h1>

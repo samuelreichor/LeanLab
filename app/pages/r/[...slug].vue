@@ -10,7 +10,7 @@ const slug = computed(() => {
 })
 
 const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
-  queryCollection('recipes').path(`/recipes/${slug.value}`).first()
+  queryCollection('recipes').path(`/r/${slug.value}`).first()
 )
 
 if (!recipe.value) {

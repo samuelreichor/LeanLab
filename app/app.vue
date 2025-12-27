@@ -1,18 +1,57 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
+// Search data for recipes
+const { data: searchFiles } = useLazyAsyncData('search', () => queryCollectionSearchSections('recipes'), {
+  server: false
+})
+const { data: rawNavigation } = await useAsyncData('navigation', () => queryCollectionNavigation('recipes'))
 
-const color = computed(() => (colorMode as unknown as { value: string }).value === 'dark' ? '#171717' : 'white')
+// Transform navigation to show "Rezepte" instead of "r"
+const navigation = computed(() => {
+  if (!rawNavigation.value) return []
+  return rawNavigation.value.map(item => ({
+    ...item,
+    title: item.title === 'R' || item.title === 'r' ? 'Rezepte' : item.title
+  }))
+})
+
+// Quick links for search
+const searchLinks = [
+  {
+    label: 'Alle Rezepte',
+    icon: 'i-lucide-book-open',
+    to: '/r'
+  },
+  {
+    label: 'Meal Prep',
+    icon: 'i-lucide-calendar',
+    to: '/r/meal-prep'
+  },
+  {
+    label: 'Muskelaufbau',
+    icon: 'i-lucide-dumbbell',
+    to: '/r/muskel-aufbau'
+  },
+  {
+    label: 'Abnehmen',
+    icon: 'i-lucide-scale',
+    to: '/r/abnehmen'
+  },
+  {
+    label: 'Vegetarisch',
+    icon: 'i-lucide-leaf',
+    to: '/r/vegetarisch'
+  }
+]
 
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    { key: 'theme-color', name: 'theme-color', content: color }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' }
   ],
   htmlAttrs: {
-    lang: 'en'
+    lang: 'de'
   }
 })
 
@@ -32,5 +71,15 @@ useSeoMeta({
     </UMain>
 
     <AppFooter />
+
+    <ClientOnly>
+      <UContentSearch
+        placeholder="Suche nach Rezepten..."
+        :files="searchFiles"
+        :navigation="navigation"
+        :links="searchLinks"
+        :fuse="{ resultLimit: 10 }"
+      />
+    </ClientOnly>
   </UApp>
 </template>

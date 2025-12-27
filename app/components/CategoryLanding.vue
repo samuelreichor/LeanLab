@@ -85,7 +85,7 @@ const jsonLd = computed(() => {
       'name': recipe.title,
       'description': recipe.description,
       'image': `https://leanlab.de${recipe.image}`,
-      'url': `https://leanlab.de/r/${recipe.path?.replace('/recipes/', '')}`
+      'url': `https://leanlab.de${recipe.path}`
     }
   }))
 
