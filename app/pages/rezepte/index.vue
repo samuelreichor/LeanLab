@@ -13,15 +13,29 @@ const validPrepTimes = ['alle', 'schnell', 'mittel', 'lang']
 const validSorts = ['newest', 'oldest', 'prep-asc', 'prep-desc', 'protein-desc', 'protein-asc', 'kcal-asc', 'kcal-desc']
 
 // Parse initial values from query params
-function parseCategories(query: string | string[] | undefined): string[] {
+type QueryValue = string | string[] | null | (string | null)[] | undefined
+
+function parseCategories(query: QueryValue): string[] {
   if (!query) return []
-  const cats = Array.isArray(query) ? query : query.split(',')
-  return cats.filter(c => validCategories.includes(c))
+  if (Array.isArray(query)) {
+    const filtered: string[] = []
+    for (const c of query) {
+      if (c !== null && validCategories.includes(c)) {
+        filtered.push(c)
+      }
+    }
+    return filtered
+  }
+  return query.split(',').filter(c => validCategories.includes(c))
 }
 
-function parseString(query: string | string[] | undefined, valid: string[], defaultVal: string): string {
-  const val = Array.isArray(query) ? query[0] : query
-  return val && valid.includes(val) ? val : defaultVal
+function parseString(query: QueryValue, valid: string[], defaultVal: string): string {
+  if (!query) return defaultVal
+  if (Array.isArray(query)) {
+    const first = query[0]
+    return first && valid.includes(first) ? first : defaultVal
+  }
+  return valid.includes(query) ? query : defaultVal
 }
 
 // Filter state (initialized from query params)

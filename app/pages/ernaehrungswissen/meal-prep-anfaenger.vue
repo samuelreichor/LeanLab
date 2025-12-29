@@ -29,7 +29,7 @@ useHead({
 
 // Fetch meal prep recipes
 const { data: mealPrepRecipes } = await useAsyncData('mealprep-recipes', () =>
-  queryCollection('recipes').where('category', 'LIKE', '%meal-prep%').limit(4).all()
+  queryCollection('recipes').where('category', 'LIKE', '%meal-prep%').limit(3).all()
 )
 
 const steps = [
@@ -114,208 +114,209 @@ const relatedArticles = [
 
     <article>
       <!-- Section 1 -->
-          <h2 class="text-2xl font-bold mb-4">
-            Was ist Meal Prep?
-          </h2>
-          <p class="text-neutral-600 dark:text-neutral-400 mb-12">
-            Meal Prep (kurz für Meal Preparation) bedeutet, mehrere Mahlzeiten im Voraus zuzubereiten. Statt jeden Tag zu kochen, investierst du einmal pro Woche 2-3 Stunden und hast dann fertige Mahlzeiten für mehrere Tage.
-          </p>
+      <h2 class="text-2xl font-bold mb-4">
+        Was ist Meal Prep?
+      </h2>
+      <p class="text-neutral-600 dark:text-neutral-400 mb-12">
+        Meal Prep (kurz für Meal Preparation) bedeutet, mehrere Mahlzeiten im Voraus zuzubereiten. Statt jeden Tag zu kochen, investierst du einmal pro Woche 2-3 Stunden und hast dann fertige Mahlzeiten für mehrere Tage.
+      </p>
 
-          <!-- Section 2 -->
-          <h2 class="text-2xl font-bold mb-4">
-            Vorteile von Meal Prep
-          </h2>
-          <div class="space-y-3 mb-12">
-            <div
-              v-for="benefit in benefits"
-              :key="benefit.text"
-              class="flex items-start gap-3"
-            >
-              <UIcon
-                :name="benefit.icon"
-                class="w-5 h-5 text-primary mt-0.5 shrink-0"
-              />
-              <span class="text-neutral-600 dark:text-neutral-400">{{ benefit.text }}</span>
-            </div>
-          </div>
+      <!-- Section 2 -->
+      <h2 class="text-2xl font-bold mb-4">
+        Vorteile von Meal Prep
+      </h2>
+      <div class="space-y-3 mb-12">
+        <div
+          v-for="benefit in benefits"
+          :key="benefit.text"
+          class="flex items-start gap-3"
+        >
+          <UIcon
+            :name="benefit.icon"
+            class="w-5 h-5 text-primary mt-0.5 shrink-0"
+          />
+          <span class="text-neutral-600 dark:text-neutral-400">{{ benefit.text }}</span>
+        </div>
+      </div>
 
-          <!-- Meal Prep Recipes -->
-          <div
-            v-if="mealPrepRecipes?.length"
-            class="mb-12"
+      <!-- Meal Prep Recipes -->
+      <div
+        v-if="mealPrepRecipes?.length"
+        class="mb-12"
+      >
+        <h3 class="text-xl font-semibold mb-2">
+          Unsere besten Meal Prep Rezepte
+        </h3>
+        <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+          Alle Rezepte sind fürs Vorkochen optimiert und halten sich gut im Kühlschrank:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <RecipeCard
+            v-for="recipe in mealPrepRecipes"
+            :key="recipe.path"
+            :recipe="recipe"
+          />
+        </div>
+        <div class="mt-4">
+          <UButton
+            to="/rezepte?category=meal-prep"
+            variant="soft"
+            color="primary"
+            trailing-icon="i-lucide-arrow-right"
+            size="md"
           >
-            <h3 class="text-xl font-semibold mb-2">
-              Unsere besten Meal Prep Rezepte
-            </h3>
-            <p class="text-neutral-600 dark:text-neutral-400 mb-4">
-              Alle Rezepte sind fürs Vorkochen optimiert und halten sich gut im Kühlschrank:
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <RecipeCard
-                v-for="recipe in mealPrepRecipes"
-                :key="recipe.path"
-                :recipe="recipe"
+            Alle Meal Prep Rezepte
+          </UButton>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <h2 class="text-2xl font-bold mb-4">
+        Die 4 Schritte zum Meal Prep
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        <div
+          v-for="(step, index) in steps"
+          :key="index"
+          class="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-5"
+        >
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+              <UIcon
+                :name="step.icon"
+                class="w-5 h-5 text-white"
               />
             </div>
-            <div class="mt-4">
-              <UButton
-                to="/rezepte/meal-prep"
-                variant="soft"
-                color="primary"
-              >
-                Alle Meal Prep Rezepte
-              </UButton>
-            </div>
+            <span class="text-sm text-neutral-500 font-medium">
+              Schritt {{ index + 1 }}
+            </span>
           </div>
-
-          <!-- Section 3 -->
-          <h2 class="text-2xl font-bold mb-4">
-            Die 4 Schritte zum Meal Prep
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-            <div
-              v-for="(step, index) in steps"
-              :key="index"
-              class="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-5"
-            >
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                  <UIcon
-                    :name="step.icon"
-                    class="w-5 h-5 text-white"
-                  />
-                </div>
-                <span class="text-sm text-neutral-500 font-medium">
-                  Schritt {{ index + 1 }}
-                </span>
-              </div>
-              <h3 class="font-semibold mb-2">
-                {{ step.title }}
-              </h3>
-              <p class="text-sm text-neutral-600 dark:text-neutral-400">
-                {{ step.description }}
-              </p>
-            </div>
-          </div>
-
-          <!-- Section 4 -->
-          <h2 class="text-2xl font-bold mb-4">
-            Die besten Lebensmittel für Meal Prep
-          </h2>
-          <p class="text-neutral-600 dark:text-neutral-400 mb-4">
-            Nicht alles eignet sich zum Vorkochen. Diese Lebensmittel halten sich gut:
+          <h3 class="font-semibold mb-2">
+            {{ step.title }}
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400">
+            {{ step.description }}
           </p>
-          <div class="space-y-3 mb-12">
-            <div
-              v-for="food in bestFoods"
-              :key="food.category"
-              class="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-4 flex items-center gap-4"
-            >
-              <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <UIcon
-                  :name="food.icon"
-                  class="w-5 h-5 text-primary"
-                />
-              </div>
-              <div>
-                <div class="font-semibold text-primary">
-                  {{ food.category }}
-                </div>
-                <div class="text-sm text-neutral-600 dark:text-neutral-400">
-                  {{ food.items }}
-                </div>
-              </div>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <h2 class="text-2xl font-bold mb-4">
+        Die besten Lebensmittel für Meal Prep
+      </h2>
+      <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+        Nicht alles eignet sich zum Vorkochen. Diese Lebensmittel halten sich gut:
+      </p>
+      <div class="space-y-3 mb-12">
+        <div
+          v-for="food in bestFoods"
+          :key="food.category"
+          class="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-4 flex items-center gap-4"
+        >
+          <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+            <UIcon
+              :name="food.icon"
+              class="w-5 h-5 text-primary"
+            />
+          </div>
+          <div>
+            <div class="font-semibold text-primary">
+              {{ food.category }}
+            </div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-400">
+              {{ food.items }}
             </div>
           </div>
+        </div>
+      </div>
 
-          <!-- Section 5 -->
-          <h2 class="text-2xl font-bold mb-4">
-            Tipps für Anfänger
-          </h2>
-          <div class="space-y-3 mb-12">
-            <div class="flex items-start gap-3">
-              <UIcon
-                name="i-lucide-lightbulb"
-                class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
-              />
-              <span class="text-neutral-600 dark:text-neutral-400">
-                <strong>Starte klein:</strong> Bereite erstmal nur das Mittagessen vor
-              </span>
-            </div>
-            <div class="flex items-start gap-3">
-              <UIcon
-                name="i-lucide-lightbulb"
-                class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
-              />
-              <span class="text-neutral-600 dark:text-neutral-400">
-                <strong>Investiere in gute Behälter:</strong> Glas oder BPA-freies Plastik
-              </span>
-            </div>
-            <div class="flex items-start gap-3">
-              <UIcon
-                name="i-lucide-lightbulb"
-                class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
-              />
-              <span class="text-neutral-600 dark:text-neutral-400">
-                <strong>Nutze den Ofen:</strong> Gemüse und Protein können gleichzeitig garen
-              </span>
-            </div>
-            <div class="flex items-start gap-3">
-              <UIcon
-                name="i-lucide-lightbulb"
-                class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
-              />
-              <span class="text-neutral-600 dark:text-neutral-400">
-                <strong>Variation einbauen:</strong> Gleiche Basis, verschiedene Saucen
-              </span>
-            </div>
-            <div class="flex items-start gap-3">
-              <UIcon
-                name="i-lucide-lightbulb"
-                class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
-              />
-              <span class="text-neutral-600 dark:text-neutral-400">
-                <strong>Einfrieren:</strong> Was nicht in 3-4 Tagen gegessen wird, einfrieren
-              </span>
-            </div>
+      <!-- Section 5 -->
+      <h2 class="text-2xl font-bold mb-4">
+        Tipps für Anfänger
+      </h2>
+      <div class="space-y-3 mb-12">
+        <div class="flex items-start gap-3">
+          <UIcon
+            name="i-lucide-lightbulb"
+            class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
+          />
+          <span class="text-neutral-600 dark:text-neutral-400">
+            <strong>Starte klein:</strong> Bereite erstmal nur das Mittagessen vor
+          </span>
+        </div>
+        <div class="flex items-start gap-3">
+          <UIcon
+            name="i-lucide-lightbulb"
+            class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
+          />
+          <span class="text-neutral-600 dark:text-neutral-400">
+            <strong>Investiere in gute Behälter:</strong> Glas oder BPA-freies Plastik
+          </span>
+        </div>
+        <div class="flex items-start gap-3">
+          <UIcon
+            name="i-lucide-lightbulb"
+            class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
+          />
+          <span class="text-neutral-600 dark:text-neutral-400">
+            <strong>Nutze den Ofen:</strong> Gemüse und Protein können gleichzeitig garen
+          </span>
+        </div>
+        <div class="flex items-start gap-3">
+          <UIcon
+            name="i-lucide-lightbulb"
+            class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
+          />
+          <span class="text-neutral-600 dark:text-neutral-400">
+            <strong>Variation einbauen:</strong> Gleiche Basis, verschiedene Saucen
+          </span>
+        </div>
+        <div class="flex items-start gap-3">
+          <UIcon
+            name="i-lucide-lightbulb"
+            class="w-5 h-5 text-amber-500 mt-0.5 shrink-0"
+          />
+          <span class="text-neutral-600 dark:text-neutral-400">
+            <strong>Einfrieren:</strong> Was nicht in 3-4 Tagen gegessen wird, einfrieren
+          </span>
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <h2 class="text-2xl font-bold mb-4">
+        Haltbarkeit im Kühlschrank
+      </h2>
+      <div class="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-6 mb-12">
+        <div class="space-y-3">
+          <div
+            v-for="item in shelfLife"
+            :key="item.food"
+            class="flex justify-between"
+          >
+            <span class="text-neutral-600 dark:text-neutral-400">{{ item.food }}</span>
+            <span class="font-semibold">{{ item.days }}</span>
           </div>
+        </div>
+      </div>
 
-          <!-- Section 6 -->
-          <h2 class="text-2xl font-bold mb-4">
-            Haltbarkeit im Kühlschrank
-          </h2>
-          <div class="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-6 mb-12">
-            <div class="space-y-3">
-              <div
-                v-for="item in shelfLife"
-                :key="item.food"
-                class="flex justify-between"
-              >
-                <span class="text-neutral-600 dark:text-neutral-400">{{ item.food }}</span>
-                <span class="font-semibold">{{ item.days }}</span>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- CTA -->
-          <div class="flex flex-wrap gap-3 mb-12">
-            <UButton
-              to="/rezepte/meal-prep"
-              size="lg"
-              color="primary"
-            >
-              Meal Prep Rezepte entdecken
-            </UButton>
-            <UButton
-              to="/ernaehrungswissen/macros-berechnen"
-              size="lg"
-              variant="outline"
-              color="neutral"
-            >
-              Makros berechnen lernen
-            </UButton>
-          </div>
+      <!-- CTA -->
+      <div class="flex flex-wrap gap-3 mb-12">
+        <UButton
+          to="/rezepte?category=meal-prep"
+          size="lg"
+          color="primary"
+        >
+          Meal Prep Rezepte entdecken
+        </UButton>
+        <UButton
+          to="/ernaehrungswissen/macros-berechnen"
+          size="lg"
+          variant="outline"
+          color="neutral"
+        >
+          Makros berechnen lernen
+        </UButton>
+      </div>
 
       <!-- Related Articles -->
       <div class="border-t border-neutral-200 dark:border-neutral-800 pt-8">

@@ -196,9 +196,11 @@ const relatedArticles = [
         </div>
         <div class="mt-4">
           <UButton
-            to="/rezepte/abnehmen"
+            to="/rezepte?category=abnehmen"
             variant="soft"
             color="primary"
+            trailing-icon="i-lucide-arrow-right"
+            size="md"
           >
             Alle Abnehm-Rezepte
           </UButton>
@@ -317,9 +319,11 @@ const relatedArticles = [
         </div>
         <div class="mt-4">
           <UButton
-            to="/rezepte/muskelaufbau"
+            to="/rezepte?category=muskel-aufbau"
             variant="soft"
             color="primary"
+            trailing-icon="i-lucide-arrow-right"
+            size="md"
           >
             Alle High Protein Rezepte
           </UButton>
@@ -329,7 +333,7 @@ const relatedArticles = [
       <!-- CTA -->
       <div class="flex flex-wrap gap-3 mb-12">
         <UButton
-          to="/rezepte/abnehmen"
+          to="/rezepte?category=abnehmen"
           size="lg"
           color="primary"
         >

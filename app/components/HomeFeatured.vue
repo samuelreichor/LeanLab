@@ -34,6 +34,7 @@ defineProps<{
           variant="soft"
           color="primary"
           trailing-icon="i-lucide-arrow-right"
+          size="md"
           class="max-md:hidden"
         >
           Alle Rezepte
@@ -48,7 +49,7 @@ defineProps<{
         />
       </div>
 
-      <div class="mt-8 sm:hidden">
+      <div class="mt-8">
         <UButton
           to="/rezepte"
           size="xl"
