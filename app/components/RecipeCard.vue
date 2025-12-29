@@ -33,7 +33,7 @@ function formatPrepTime(minutes: number): string {
 
 <template>
   <NuxtLink
-    :to="recipe.path?.replace('/recipes', '/r')"
+    :to="recipe.path?.replace('/recipes', '/rezepte')"
     class="group"
   >
     <div class="bg-white dark:bg-neutral-900 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 h-full">

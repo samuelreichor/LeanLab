@@ -1,14 +1,58 @@
 <script setup lang="ts">
+const route = useRoute()
+const router = useRouter()
+
 const { data: recipes } = await useAsyncData('recipes', () =>
   queryCollection('recipes').all()
 )
 
-// Filter state
-const selectedCategories = ref<string[]>([])
-const selectedDifficulty = ref<string>('alle')
-const selectedPrepTime = ref<string>('alle')
-const sortBy = ref('newest')
+// Valid filter values
+const validCategories = ['meal-prep', 'muskel-aufbau', 'abnehmen', 'vegetarisch']
+const validDifficulties = ['alle', 'einfach', 'mittel', 'schwierig']
+const validPrepTimes = ['alle', 'schnell', 'mittel', 'lang']
+const validSorts = ['newest', 'oldest', 'prep-asc', 'prep-desc', 'protein-desc', 'protein-asc', 'kcal-asc', 'kcal-desc']
+
+// Parse initial values from query params
+function parseCategories(query: string | string[] | undefined): string[] {
+  if (!query) return []
+  const cats = Array.isArray(query) ? query : query.split(',')
+  return cats.filter(c => validCategories.includes(c))
+}
+
+function parseString(query: string | string[] | undefined, valid: string[], defaultVal: string): string {
+  const val = Array.isArray(query) ? query[0] : query
+  return val && valid.includes(val) ? val : defaultVal
+}
+
+// Filter state (initialized from query params)
+const selectedCategories = ref<string[]>(parseCategories(route.query.category))
+const selectedDifficulty = ref<string>(parseString(route.query.difficulty, validDifficulties, 'alle'))
+const selectedPrepTime = ref<string>(parseString(route.query.time, validPrepTimes, 'alle'))
+const sortBy = ref(parseString(route.query.sort, validSorts, 'newest'))
 const mobileFiltersOpen = ref(false)
+
+// Sync filters to URL
+function updateQueryParams() {
+  const query: Record<string, string | undefined> = {}
+
+  if (selectedCategories.value.length > 0) {
+    query.category = selectedCategories.value.join(',')
+  }
+  if (selectedDifficulty.value !== 'alle') {
+    query.difficulty = selectedDifficulty.value
+  }
+  if (selectedPrepTime.value !== 'alle') {
+    query.time = selectedPrepTime.value
+  }
+  if (sortBy.value !== 'newest') {
+    query.sort = sortBy.value
+  }
+
+  router.replace({ query })
+}
+
+// Watch for filter changes and update URL
+watch([selectedCategories, selectedDifficulty, selectedPrepTime, sortBy], updateQueryParams, { deep: true })
 
 // Filter options
 const categoryOptions = [

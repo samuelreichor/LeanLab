@@ -7,10 +7,10 @@
     :seo="{
       title: 'Vegetarische Rezepte - Fleischfrei & High-Protein',
       description: 'Vegetarische High-Protein Rezepte ohne Fleisch. Leckere fleischfreie Gerichte mit viel Eiweiß aus Hülsenfrüchten, Tofu und Milchprodukten. Ideal für Vegetarier und Flexitarier.',
-      ogTitle: 'Vegetarische Rezepte | LeanLab',
+      ogTitle: 'Vegetarische Rezepte | Fit Kitchen',
       ogDescription: 'Fleischfreie High-Protein Rezepte für Vegetarier.',
       ogImage: '/og-vegetarisch.png',
-      ogUrl: 'https://leanlab.de/r/vegetarisch'
+      ogUrl: 'https://fit-kitchen.at/rezepte/vegetarisch'
     }"
   />
 </template>

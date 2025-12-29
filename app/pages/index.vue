@@ -15,13 +15,13 @@ const featuredRecipes = computed(() => {
 useSeoMeta({
   title: 'High-Protein Rezepte für Fitness & Muskelaufbau',
   description: 'Entdecke einfache High-Protein Rezepte für Muskelaufbau, Abnehmen und Meal Prep. Schnell zubereitet, mit berechneten Makros für deine Fitnessziele.',
-  ogTitle: 'LeanLab - High-Protein Rezepte für Fitness',
+  ogTitle: 'Fit Kitchen - High-Protein Rezepte für Fitness',
   ogDescription: 'Einfache Fitness-Rezepte mit berechneten Makros. Optimiert für Muskelaufbau und Abnehmen.',
   ogImage: '/og-image.png',
-  ogUrl: 'https://leanlab.de',
+  ogUrl: 'https://fit-kitchen.at',
   ogType: 'website',
   twitterCard: 'summary_large_image',
-  twitterTitle: 'LeanLab - High-Protein Rezepte',
+  twitterTitle: 'Fit Kitchen - High-Protein Rezepte',
   twitterDescription: 'Einfache Fitness-Rezepte mit berechneten Makros.'
 })
 
@@ -34,8 +34,8 @@ const jsonLd = computed(() => {
       '@type': 'Recipe',
       'name': recipe.title,
       'description': recipe.description,
-      'image': `https://leanlab.de${recipe.image}`,
-      'url': `https://leanlab.de${recipe.path}`
+      'image': `https://fit-kitchen.at${recipe.image}`,
+      'url': `https://fit-kitchen.at${recipe.path}`
     }
   }))
 
@@ -44,26 +44,26 @@ const jsonLd = computed(() => {
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': 'https://leanlab.de/#website',
-        'name': 'LeanLab',
-        'url': 'https://leanlab.de',
+        '@id': 'https://fit-kitchen.at/#website',
+        'name': 'Fit Kitchen',
+        'url': 'https://fit-kitchen.at',
         'description': 'High-Protein Rezepte für Fitness & Muskelaufbau',
         'inLanguage': 'de-DE'
       },
       {
         '@type': 'Organization',
-        '@id': 'https://leanlab.de/#organization',
-        'name': 'LeanLab',
-        'url': 'https://leanlab.de',
+        '@id': 'https://fit-kitchen.at/#organization',
+        'name': 'Fit Kitchen',
+        'url': 'https://fit-kitchen.at',
         'logo': {
           '@type': 'ImageObject',
-          'url': 'https://leanlab.de/logo.png'
+          'url': 'https://fit-kitchen.at/logo.png'
         }
       },
       {
         '@type': 'ItemList',
         'name': 'Featured Rezepte',
-        'description': 'Die proteinreichsten Rezepte bei LeanLab',
+        'description': 'Die proteinreichsten Rezepte bei Fit Kitchen',
         'numberOfItems': recipeItems.length,
         'itemListElement': recipeItems
       }
@@ -88,5 +88,6 @@ useHead({
     <HomeCategories />
     <NewsletterSection />
     <HomeBenefits />
+    <HomeFaq />
   </div>
 </template>

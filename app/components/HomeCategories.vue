@@ -38,7 +38,7 @@ const categories = [
         <NuxtLink
           v-for="category in categories"
           :key="category.slug"
-          :to="`/r/${category.slug}`"
+          :to="`/rezepte/${category.slug}`"
           class="group"
         >
           <div class="bg-white dark:bg-neutral-900 rounded-2xl p-4 lg:p-6 h-full border border-neutral-200 dark:border-neutral-800 transition-all hover:-translate-y-1">

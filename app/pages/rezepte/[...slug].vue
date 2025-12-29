@@ -11,7 +11,7 @@ const slug = computed(() => {
 })
 
 const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
-  queryCollection('recipes').path(`/r/${slug.value}`).first()
+  queryCollection('recipes').path(`/rezepte/${slug.value}`).first()
 )
 
 // Fetch all recipes for similar recipes section
@@ -89,6 +89,8 @@ useSeoMeta({
         />
 
         <RecipeMacros :macros="recipe.macros" />
+
+        <RecipeAuthor class="mt-4" />
       </div>
 
       <div class="lg:col-span-2 mt-12 md:mt-8">

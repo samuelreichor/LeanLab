@@ -80,7 +80,7 @@ const stats = computed(() => {
           </dl>
 
           <UButton
-            to="/r"
+            to="/rezepte"
             size="xl"
             color="primary"
             trailing-icon="i-lucide-arrow-right"

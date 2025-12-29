@@ -29,7 +29,7 @@ const benefits = [
       <div class="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12">
         <div class="text-center mb-10">
           <h2 class="text-2xl md:text-3xl font-bold mb-3">
-            Warum LeanLab?
+            Warum Fit Kitchen?
           </h2>
           <p class="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
             Rezepte, die zu deinen Fitnesszielen passen

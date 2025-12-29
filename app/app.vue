@@ -3,43 +3,34 @@
 const { data: searchFiles } = useLazyAsyncData('search', () => queryCollectionSearchSections('recipes'), {
   server: false
 })
-const { data: rawNavigation } = await useAsyncData('navigation', () => queryCollectionNavigation('recipes'))
-
-// Transform navigation to show "Rezepte" instead of "r"
-const navigation = computed(() => {
-  if (!rawNavigation.value) return []
-  return rawNavigation.value.map(item => ({
-    ...item,
-    title: item.title === 'R' || item.title === 'r' ? 'Rezepte' : item.title
-  }))
-})
+const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('recipes'))
 
 // Quick links for search
 const searchLinks = [
   {
     label: 'Alle Rezepte',
     icon: 'i-lucide-book-open',
-    to: '/r'
+    to: '/rezepte'
   },
   {
     label: 'Meal Prep',
     icon: 'i-lucide-calendar',
-    to: '/r/meal-prep'
+    to: '/rezepte/meal-prep'
   },
   {
     label: 'Muskelaufbau',
     icon: 'i-lucide-dumbbell',
-    to: '/r/muskel-aufbau'
+    to: '/rezepte/muskel-aufbau'
   },
   {
     label: 'Abnehmen',
     icon: 'i-lucide-scale',
-    to: '/r/abnehmen'
+    to: '/rezepte/abnehmen'
   },
   {
     label: 'Vegetarisch',
     icon: 'i-lucide-leaf',
-    to: '/r/vegetarisch'
+    to: '/rezepte/vegetarisch'
   }
 ]
 

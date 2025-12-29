@@ -18,7 +18,7 @@ const macrosSchema = z.object({
 
 export const collections = {
   recipes: defineCollection({
-    source: 'r/**/*.md',
+    source: 'rezepte/**/*.md',
     type: 'page',
     schema: z.object({
       title: z.string(),

@@ -29,16 +29,15 @@ defineProps<{
             Die proteinreichsten Rezepte aus unserer Sammlung
           </p>
         </div>
-        <NuxtLink
-          to="/r"
-          class="hidden sm:flex items-center gap-1 text-primary font-medium hover:underline"
+        <UButton
+          to="/rezepte"
+          variant="soft"
+          color="primary"
+          trailing-icon="i-lucide-arrow-right"
+          class="max-md:hidden"
         >
           Alle Rezepte
-          <UIcon
-            name="i-lucide-arrow-right"
-            class="w-4 h-4"
-          />
-        </NuxtLink>
+        </UButton>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -51,7 +50,7 @@ defineProps<{
 
       <div class="mt-8 sm:hidden">
         <UButton
-          to="/r"
+          to="/rezepte"
           size="xl"
           color="primary"
           trailing-icon="i-lucide-arrow-right"

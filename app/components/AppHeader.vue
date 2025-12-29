@@ -3,8 +3,14 @@ const route = useRoute()
 const items = computed(() => [{
   label: 'Rezepte',
   icon: 'i-lucide-chef-hat',
-  to: '/r',
-  active: route.path.startsWith('/r')
+  to: '/rezepte',
+  active: route.path.startsWith('/rezepte')
+},
+{
+  label: 'Ernährungswissen',
+  icon: 'i-lucide-book-open',
+  to: '/ernaehrungswissen',
+  active: route.path.startsWith('/ernaehrungswissen')
 },
 {
   label: 'Über uns',
@@ -46,8 +52,8 @@ watch(() => route.path, () => {
       <template #left>
         <NuxtLink
           to="/"
-          aria-label="LeanLab - Zur Startseite"
-          class="focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary rounded-lg"
+          aria-label="Fit Kitchen - Zur Startseite"
+          class="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg"
         >
           <AppLogo class="w-auto h-10 shrink-0" />
         </NuxtLink>
@@ -57,7 +63,7 @@ watch(() => route.path, () => {
         <UNavigationMenu
           :items="items"
           :ui="{
-            link: 'text-lg text-white [&[aria-current=page]]:text-primary [&[aria-current=page]]:before:bg-white data-[state=open]:text-white hover:text-white data-[state=open]:before:bg-primary-400 hover:before:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary rounded-lg',
+            link: 'text-lg text-white [&[aria-current=page]]:text-primary [&[aria-current=page]]:before:bg-white data-[state=open]:text-white hover:text-white data-[state=open]:before:bg-primary-400 hover:before:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary rounded-lg',
             linkLeadingIcon: 'text-current group-hover:text-current group-data-[state=open]:text-current'
           }"
           variant="pill"
@@ -80,7 +86,7 @@ watch(() => route.path, () => {
         <nav
           ref="mobileNav"
           aria-label="Mobile Navigation"
-          class="-mx-2.5"
+          class=""
         >
           <ul class="space-y-1">
             <li
@@ -89,7 +95,7 @@ watch(() => route.path, () => {
             >
               <NuxtLink
                 :to="item.to"
-                class="flex items-center gap-3 px-3 py-2 rounded-lg text-base font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-primary"
+                class="flex items-center gap-3 px-4 py-2 rounded-lg text-base font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 :class="{ 'bg-primary/10 text-primary': item.active }"
               >
                 <UIcon

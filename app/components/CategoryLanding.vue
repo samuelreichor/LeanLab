@@ -84,8 +84,8 @@ const jsonLd = computed(() => {
       '@type': 'Recipe',
       'name': recipe.title,
       'description': recipe.description,
-      'image': `https://leanlab.de${recipe.image}`,
-      'url': `https://leanlab.de${recipe.path}`
+      'image': `https://fit-kitchen.at${recipe.image}`,
+      'url': `https://fit-kitchen.at${recipe.path}`
     }
   }))
 
@@ -115,7 +115,7 @@ useHead({
 </script>
 
 <template>
-  <UContainer class="py-8 md:py-12">
+  <UContainer class="pt-6 md:pt-10">
     <!-- Hero -->
     <div class="mb-10">
       <div class="flex items-center gap-3 mb-4">
@@ -134,7 +134,7 @@ useHead({
       </p>
 
       <UButton
-        to="/r"
+        to="/rezepte"
         size="xl"
         color="primary"
         trailing-icon="i-lucide-arrow-right"

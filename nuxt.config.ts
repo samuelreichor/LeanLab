@@ -14,12 +14,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      titleTemplate: '%s | LeanLab',
+      titleTemplate: '%s | Fit Kitchen',
       meta: [
         { name: 'robots', content: 'index, follow' }
       ],
       link: [
-        { rel: 'canonical', href: 'https://leanlab.de' }
+        { rel: 'canonical', href: 'https://fit-kitchen.at' }
       ]
     }
   },

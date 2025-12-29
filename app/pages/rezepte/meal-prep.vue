@@ -7,10 +7,10 @@
     :seo="{
       title: 'Meal Prep Rezepte - Vorkochen für die Woche',
       description: 'Einfache Meal Prep Rezepte zum Vorkochen. High-Protein Gerichte für die ganze Woche vorbereiten. Zeit sparen und gesund essen mit unseren Meal Prep Ideen.',
-      ogTitle: 'Meal Prep Rezepte | LeanLab',
+      ogTitle: 'Meal Prep Rezepte | Fit Kitchen',
       ogDescription: 'High-Protein Meal Prep Rezepte zum Vorkochen für die ganze Woche.',
       ogImage: '/og-meal-prep.png',
-      ogUrl: 'https://leanlab.de/r/meal-prep'
+      ogUrl: 'https://fit-kitchen.at/rezepte/meal-prep'
     }"
   />
 </template>

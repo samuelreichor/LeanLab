@@ -1,12 +1,12 @@
 <script setup lang="ts">
 // SEO Meta Tags
 useSeoMeta({
-  title: 'Über uns - Das Team hinter LeanLab',
-  description: 'Lerne das Team hinter LeanLab kennen. Wir sind Fitness-Enthusiasten und Ernährungsexperten, die einfache High-Protein Rezepte für deine Fitnessziele entwickeln.',
-  ogTitle: 'Über uns | LeanLab',
-  ogDescription: 'Das Team hinter LeanLab - Fitness-Enthusiasten und Ernährungsexperten.',
+  title: 'Über uns - Das Team hinter Fit Kitchen',
+  description: 'Lerne das Team hinter Fit Kitchen kennen. Wir sind Fitness-Enthusiasten und Ernährungsexperten, die einfache High-Protein Rezepte für deine Fitnessziele entwickeln.',
+  ogTitle: 'Über uns | Fit Kitchen',
+  ogDescription: 'Das Team hinter Fit Kitchen - Fitness-Enthusiasten und Ernährungsexperten.',
   ogImage: '/og-ueber-uns.png',
-  ogUrl: 'https://leanlab.de/ueber-uns',
+  ogUrl: 'https://fit-kitchen.at/ueber-uns',
   twitterCard: 'summary_large_image'
 })
 
@@ -16,31 +16,31 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': 'https://leanlab.de/#organization',
-      'name': 'LeanLab',
-      'url': 'https://leanlab.de',
+      '@id': 'https://fit-kitchen.at/#organization',
+      'name': 'Fit Kitchen',
+      'url': 'https://fit-kitchen.at',
       'logo': {
         '@type': 'ImageObject',
-        'url': 'https://leanlab.de/logo.png'
+        'url': 'https://fit-kitchen.at/logo.png'
       },
-      'description': 'LeanLab ist deine Plattform für einfache High-Protein Rezepte. Optimiert für Muskelaufbau, Abnehmen und Meal Prep.',
+      'description': 'Fit Kitchen ist deine Plattform für einfache High-Protein Rezepte. Optimiert für Muskelaufbau, Abnehmen und Meal Prep.',
       'foundingDate': '2024',
       'sameAs': [
-        'https://instagram.com/leanlab.de'
+        'https://instagram.com/fit.kitchen.at'
       ]
     },
     {
       '@type': 'WebPage',
-      '@id': 'https://leanlab.de/ueber-uns',
-      'url': 'https://leanlab.de/ueber-uns',
-      'name': 'Über uns - Das Team hinter LeanLab',
+      '@id': 'https://fit-kitchen.at/ueber-uns',
+      'url': 'https://fit-kitchen.at/ueber-uns',
+      'name': 'Über uns - Das Team hinter Fit Kitchen',
       'isPartOf': {
-        '@id': 'https://leanlab.de/#website'
+        '@id': 'https://fit-kitchen.at/#website'
       },
       'about': {
-        '@id': 'https://leanlab.de/#organization'
+        '@id': 'https://fit-kitchen.at/#organization'
       },
-      'description': 'Lerne das Team hinter LeanLab kennen.'
+      'description': 'Lerne das Team hinter Fit Kitchen kennen.'
     }
   ]
 }
@@ -87,7 +87,7 @@ const values = [
           <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-6">
             Wir sind
             <span class="text-primary relative underline decoration-wavy decoration-pink-200 underline-offset-8 decoration-4">
-              Lean Lab
+              Fit Kitchen
             </span>
           </h1>
           <p class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl">
@@ -113,7 +113,7 @@ const values = [
               Wir glauben, dass gesunde Ernährung nicht kompliziert sein muss. Deshalb entwickeln wir Rezepte, die proteinreich, lecker und einfach zuzubereiten sind.
             </p>
             <p class="text-lg text-neutral-600 dark:text-neutral-400">
-              Ob du Muskeln aufbauen, abnehmen oder einfach bewusster essen möchtest – bei LeanLab findest du Rezepte, die zu deinen Zielen passen. Mit präzise berechneten Makros und klaren Anleitungen.
+              Ob du Muskeln aufbauen, abnehmen oder einfach bewusster essen möchtest – bei Fit Kitchen findest du Rezepte, die zu deinen Zielen passen. Mit präzise berechneten Makros und klaren Anleitungen.
             </p>
           </div>
         </div>
@@ -194,22 +194,22 @@ const values = [
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <UButton
-              to="mailto:hallo@leanlab.de"
+              to="mailto:hallo@fit-kitchen.at"
               size="xl"
               color="primary"
               leading-icon="i-lucide-mail"
             >
-              hallo@leanlab.de
+              hallo@fit-kitchen.at
             </UButton>
             <UButton
-              to="https://instagram.com/leanlab.de"
+              to="https://instagram.com/fit.kitchen.at"
               target="_blank"
               size="xl"
               variant="outline"
               color="neutral"
               leading-icon="i-simple-icons-instagram"
             >
-              @leanlab.de
+              @fit.kitchen.at
             </UButton>
           </div>
         </div>

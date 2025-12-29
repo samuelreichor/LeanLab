@@ -3,25 +3,43 @@ const columns = [{
   label: 'Rezepte',
   children: [{
     label: 'Alle Rezepte',
-    to: '/r',
+    to: '/rezepte'
   }, {
     label: 'Meal Prep',
-    to: '/r/meal-prep',
+    to: '/rezepte/meal-prep'
   }, {
     label: 'Muskelaufbau',
-    to: '/r/muskelaufbau',
+    to: '/rezepte/muskelaufbau'
   }, {
     label: 'Abnehmen',
-    to: '/r/abnehmen',
-  },{
+    to: '/rezepte/abnehmen'
+  }, {
     label: 'Vegetarisch',
-    to: '/r/vegetarisch',
+    to: '/rezepte/vegetarisch'
   }]
-},{
+}, {
+  label: 'Ernährungswissen',
+  children: [{
+    label: 'Übersicht',
+    to: '/ernaehrungswissen'
+  }, {
+    label: 'Was ist High Protein?',
+    to: '/ernaehrungswissen/was-ist-high-protein'
+  }, {
+    label: 'Makros berechnen',
+    to: '/ernaehrungswissen/macros-berechnen'
+  }, {
+    label: 'Abnehmen mit Makros',
+    to: '/ernaehrungswissen/abnehmen-mit-macros'
+  }, {
+    label: 'Meal Prep Guide',
+    to: '/ernaehrungswissen/meal-prep-anfaenger'
+  }]
+}, {
   label: 'Company',
   children: [{
     label: 'Über uns',
-    to: '/ueber-uns',
+    to: '/ueber-uns'
   }, {
     label: 'Datenschutz',
     to: '/datenschutz'
@@ -53,7 +71,7 @@ const columns = [{
 
     <template #default>
       <p class="text-sm text-muted">
-        Lean Lab © {{ new Date().getFullYear() }}
+        Fit Kitchen © {{ new Date().getFullYear() }}
       </p>
     </template>
   </UFooter>
