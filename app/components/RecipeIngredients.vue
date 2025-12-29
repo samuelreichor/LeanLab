@@ -54,6 +54,7 @@ function increase() {
           size="xs"
           class="cursor-pointer"
           :disabled="servings <= 1"
+          aria-label="Portion verringern"
           @click="decrease"
         />
         <span class="text-sm font-medium min-w-16 text-center">
@@ -66,6 +67,7 @@ function increase() {
           size="xs"
           class="cursor-pointer"
           :disabled="servings >= 20"
+          aria-label="Portion erhöhen"
           @click="increase"
         />
       </div>

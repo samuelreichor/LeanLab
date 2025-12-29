@@ -79,131 +79,141 @@ const values = [
 </script>
 
 <template>
-  <UContainer class="pt-12 md:pt-20">
+  <div>
     <!-- Hero Section -->
-    <div class="mb-12">
-      <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-6">
-        Wir sind
-        <span class="text-primary relative underline decoration-wavy decoration-pink-200 underline-offset-8 decoration-4">
-          Lean Lab
-        </span>
-      </h1>
-      <p class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl">
-        Eine Plattform von Fitness-Enthusiasten für alle, die sich gesund ernähren möchten – ohne dabei auf Geschmack zu verzichten.
-      </p>
-    </div>
-
-    <!-- Mission Section -->
-    <div class="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12 mb-12">
-      <div>
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
-            <UIcon
-              name="i-lucide-target"
-              class="w-6 h-6 text-white"
-            />
-          </div>
-          <h2 class="text-2xl md:text-3xl font-bold">
-            Unsere Mission
-          </h2>
-        </div>
-        <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
-          Wir glauben, dass gesunde Ernährung nicht kompliziert sein muss. Deshalb entwickeln wir Rezepte, die proteinreich, lecker und einfach zuzubereiten sind.
-        </p>
-        <p class="text-lg text-neutral-600 dark:text-neutral-400">
-          Ob du Muskeln aufbauen, abnehmen oder einfach bewusster essen möchtest – bei LeanLab findest du Rezepte, die zu deinen Zielen passen. Mit präzise berechneten Makros und klaren Anleitungen.
-        </p>
-      </div>
-    </div>
-
-    <!-- Values Grid -->
-    <div class="mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold mb-8">
-        Wofür wir stehen
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div
-          v-for="value in values"
-          :key="value.title"
-          class="bg-white dark:bg-neutral-900 rounded-2xl p-6 border border-neutral-200 dark:border-neutral-800"
-        >
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-            <UIcon
-              :name="value.icon"
-              class="w-6 h-6 text-primary"
-            />
-          </div>
-          <h3 class="text-lg font-semibold mb-2">
-            {{ value.title }}
-          </h3>
-          <p class="text-neutral-600 dark:text-neutral-400">
-            {{ value.description }}
+    <section class="pt-6 md:pt-10">
+      <UContainer>
+        <div>
+          <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-6">
+            Wir sind
+            <span class="text-primary relative underline decoration-wavy decoration-pink-200 underline-offset-8 decoration-4">
+              Lean Lab
+            </span>
+          </h1>
+          <p class="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl">
+            Eine Plattform von Fitness-Enthusiasten für alle, die sich gesund ernähren möchten – ohne dabei auf Geschmack zu verzichten.
           </p>
         </div>
-      </div>
-    </div>
+
+        <!-- Mission Section -->
+        <div class="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12 mt-12 md:mt-16">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
+                <UIcon
+                  name="i-lucide-target"
+                  class="w-6 h-6 text-white"
+                />
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold">
+                Unsere Mission
+              </h2>
+            </div>
+            <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
+              Wir glauben, dass gesunde Ernährung nicht kompliziert sein muss. Deshalb entwickeln wir Rezepte, die proteinreich, lecker und einfach zuzubereiten sind.
+            </p>
+            <p class="text-lg text-neutral-600 dark:text-neutral-400">
+              Ob du Muskeln aufbauen, abnehmen oder einfach bewusster essen möchtest – bei LeanLab findest du Rezepte, die zu deinen Zielen passen. Mit präzise berechneten Makros und klaren Anleitungen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Values Grid -->
+        <div class="mt-12 md:mt-16">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8">
+            Wofür wir stehen
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div
+              v-for="value in values"
+              :key="value.title"
+              class="bg-white dark:bg-neutral-900 rounded-2xl p-6 border border-neutral-200 dark:border-neutral-800"
+            >
+              <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <UIcon
+                  :name="value.icon"
+                  class="w-6 h-6 text-primary"
+                />
+              </div>
+              <h3 class="text-lg font-semibold mb-2">
+                {{ value.title }}
+              </h3>
+              <p class="text-neutral-600 dark:text-neutral-400">
+                {{ value.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+
+    <NewsletterSection />
 
     <!-- Trust Section -->
-    <div class="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12 mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold mb-8">
-        Warum du uns vertrauen kannst
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <div class="text-4xl font-bold text-primary mb-2">
-            100%
+    <section class="mt-12 md:mt-16">
+      <UContainer>
+        <div class="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12">
+          <h2 class="text-2xl md:text-3xl font-bold mb-8">
+            Warum du uns vertrauen kannst
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <div class="text-4xl font-bold text-primary mb-2">
+                100%
+              </div>
+              <p class="text-neutral-600 dark:text-neutral-400">
+                Selbst entwickelte & getestete Rezepte
+              </p>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-primary mb-2">
+                Präzise
+              </div>
+              <p class="text-neutral-600 dark:text-neutral-400">
+                Berechnete Makronährwerte pro Portion
+              </p>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-primary mb-2">
+                Gratis
+              </div>
+              <p class="text-neutral-600 dark:text-neutral-400">
+                Alle Rezepte kostenlos verfügbar
+              </p>
+            </div>
           </div>
-          <p class="text-neutral-600 dark:text-neutral-400">
-            Selbst entwickelte & getestete Rezepte
-          </p>
         </div>
-        <div>
-          <div class="text-4xl font-bold text-primary mb-2">
-            Präzise
-          </div>
-          <p class="text-neutral-600 dark:text-neutral-400">
-            Berechnete Makronährwerte pro Portion
-          </p>
-        </div>
-        <div>
-          <div class="text-4xl font-bold text-primary mb-2">
-            Gratis
-          </div>
-          <p class="text-neutral-600 dark:text-neutral-400">
-            Alle Rezepte kostenlos verfügbar
-          </p>
-        </div>
-      </div>
-    </div>
 
-    <!-- Contact Section -->
-    <div>
-      <h2 class="text-2xl md:text-3xl font-bold mb-4">
-        Fragen oder Feedback?
-      </h2>
-      <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl">
-        Wir freuen uns über jede Nachricht. Schreib uns gerne, wenn du Rezeptwünsche hast oder Verbesserungsvorschläge.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <UButton
-          to="mailto:hallo@leanlab.de"
-          size="xl"
-          color="primary"
-          leading-icon="i-lucide-mail"
-        >
-          hallo@leanlab.de
-        </UButton>
-        <UButton
-          to="https://instagram.com/leanlab.de"
-          target="_blank"
-          size="xl"
-          variant="outline"
-          color="neutral"
-          leading-icon="i-simple-icons-instagram"
-        >
-          @leanlab.de
-        </UButton>
-      </div>
-    </div>
-  </UContainer>
+        <!-- Contact Section -->
+        <div class="mt-12 md:mt-16">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            Fragen oder Feedback?
+          </h2>
+          <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl">
+            Wir freuen uns über jede Nachricht. Schreib uns gerne, wenn du Rezeptwünsche hast oder Verbesserungsvorschläge.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <UButton
+              to="mailto:hallo@leanlab.de"
+              size="xl"
+              color="primary"
+              leading-icon="i-lucide-mail"
+            >
+              hallo@leanlab.de
+            </UButton>
+            <UButton
+              to="https://instagram.com/leanlab.de"
+              target="_blank"
+              size="xl"
+              variant="outline"
+              color="neutral"
+              leading-icon="i-simple-icons-instagram"
+            >
+              @leanlab.de
+            </UButton>
+          </div>
+        </div>
+      </UContainer>
+    </section>
+  </div>
 </template>

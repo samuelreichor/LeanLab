@@ -34,7 +34,7 @@ function formatPrepTime(minutes: number): string {
 <template>
   <!-- Mobile: Stacked layout -->
   <div class="md:hidden">
-    <div class="relative w-full aspect-[4/3] overflow-hidden rounded-2xl">
+    <div class="relative w-full aspect-4/3 overflow-hidden rounded-2xl">
       <NuxtImg
         :src="image"
         :alt="title"
@@ -80,13 +80,13 @@ function formatPrepTime(minutes: number): string {
   </div>
 
   <!-- Desktop: Overlay layout -->
-  <div class="hidden md:block relative w-full h-96 lg:h-[28rem] overflow-hidden rounded-2xl">
+  <div class="hidden md:block relative w-full h-96 lg:h-112 overflow-hidden rounded-2xl">
     <NuxtImg
       :src="image"
       :alt="title"
       class="absolute inset-0 w-full h-full object-cover"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+    <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
 
     <div class="absolute bottom-0 left-0 right-0 p-8">
       <div class="flex flex-wrap gap-2 mb-4">

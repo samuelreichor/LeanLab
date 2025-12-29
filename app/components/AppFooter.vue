@@ -1,52 +1,38 @@
 <script setup lang="ts">
 const columns = [{
-  label: 'Resources',
+  label: 'Rezepte',
   children: [{
-    label: 'Help center'
+    label: 'Alle Rezepte',
+    to: '/r',
   }, {
-    label: 'Docs'
+    label: 'Meal Prep',
+    to: '/r/meal-prep',
   }, {
-    label: 'Roadmap'
+    label: 'Muskelaufbau',
+    to: '/r/muskelaufbau',
   }, {
-    label: 'Changelog'
+    label: 'Abnehmen',
+    to: '/r/abnehmen',
+  },{
+    label: 'Vegetarisch',
+    to: '/r/vegetarisch',
   }]
-}, {
-  label: 'Features',
-  children: [{
-    label: 'Affiliates'
-  }, {
-    label: 'Portal'
-  }, {
-    label: 'Jobs'
-  }, {
-    label: 'Sponsors'
-  }]
-}, {
+},{
   label: 'Company',
   children: [{
-    label: 'About'
+    label: 'Über uns',
+    to: '/ueber-uns',
   }, {
-    label: 'Pricing'
+    label: 'Datenschutz',
+    to: '/datenschutz'
   }, {
-    label: 'Careers'
+    label: 'Impressum',
+    to: '/impressum'
   }, {
-    label: 'Blog'
+    label: 'AGB',
+    to: '/agb'
   }]
 }]
-
-const toast = useToast()
-
-const email = ref('')
-const loading = ref(false)
-
-function onSubmit() {
-  loading.value = true
-
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.'
-  })
-}
 </script>
 
 <template>
@@ -59,64 +45,16 @@ function onSubmit() {
       <UContainer>
         <UFooterColumns :columns="columns">
           <template #right>
-            <form @submit.prevent="onSubmit">
-              <UFormField
-                name="email"
-                label="Subscribe to our newsletter"
-                size="lg"
-              >
-                <UInput
-                  v-model="email"
-                  type="email"
-                  class="w-full"
-                  placeholder="Enter your email"
-                >
-                  <template #trailing>
-                    <UButton
-                      type="submit"
-                      size="xs"
-                      label="Subscribe"
-                    />
-                  </template>
-                </UInput>
-              </UFormField>
-            </form>
+            <NewsletterForm />
           </template>
         </UFooterColumns>
       </UContainer>
     </template>
 
-    <template #left>
+    <template #default>
       <p class="text-sm text-muted">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
+        Lean Lab © {{ new Date().getFullYear() }}
       </p>
-    </template>
-
-    <template #right>
-      <UButton
-        to="https://go.nuxt.com/discord"
-        target="_blank"
-        icon="i-simple-icons-discord"
-        aria-label="Nuxt on Discord"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://go.nuxt.com/x"
-        target="_blank"
-        icon="i-simple-icons-x"
-        aria-label="Nuxt on X"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://github.com/nuxt-ui-templates/landing"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="Nuxt UI on GitHub"
-        color="neutral"
-        variant="ghost"
-      />
     </template>
   </UFooter>
 </template>

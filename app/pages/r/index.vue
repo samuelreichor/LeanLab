@@ -134,10 +134,45 @@ useSeoMeta({
   title: 'Rezepte',
   description: 'Einfache High-Protein Rezepte für deine Fitnessziele'
 })
+
+// Smart sticky filter bar
+const showMobileFilters = ref(true)
+const lastScrollY = ref(0)
+const mobileFilterBar = useTemplateRef<HTMLElement>('mobileFilterBar')
+const filterBarOffset = ref(0)
+
+function handleScroll() {
+  const currentScrollY = window.scrollY
+
+  // Only start hiding after the filter bar would be sticky
+  if (currentScrollY < filterBarOffset.value) {
+    showMobileFilters.value = true
+  } else if (currentScrollY < lastScrollY.value) {
+    // Scrolling up - show
+    showMobileFilters.value = true
+  } else if (currentScrollY > lastScrollY.value + 10) {
+    // Scrolling down (with threshold to avoid jitter) - hide
+    showMobileFilters.value = false
+  }
+
+  lastScrollY.value = currentScrollY
+}
+
+onMounted(() => {
+  // Get the initial offset of the filter bar
+  if (mobileFilterBar.value) {
+    filterBarOffset.value = mobileFilterBar.value.offsetTop
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
-  <UContainer class="py-8">
+  <UContainer class="pt-6 md:pt-10">
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
       <!-- Filters Sidebar - Desktop -->
       <aside class="hidden lg:block lg:col-span-1 self-start sticky top-6">
@@ -169,7 +204,10 @@ useSeoMeta({
           <div class="space-y-6">
             <!-- Sort -->
             <div>
-              <label class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2 block">
+              <label
+                id="sort-label-desktop"
+                class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2 block"
+              >
                 Sortieren nach
               </label>
               <USelect
@@ -177,6 +215,8 @@ useSeoMeta({
                 :items="sortOptions"
                 size="xl"
                 class="w-full"
+                aria-label="Sortieren nach"
+                aria-labelledby="sort-label-desktop"
               />
             </div>
 
@@ -189,6 +229,9 @@ useSeoMeta({
                 <button
                   v-for="option in categoryOptions"
                   :key="option.value"
+                  type="button"
+                  :aria-label="`Kategorie ${option.label} ${isSelected(option.value) ? 'entfernen' : 'auswählen'}`"
+                  :aria-pressed="isSelected(option.value)"
                   :class="[
                     'w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-left text-sm transition-colors cursor-pointer',
                     isSelected(option.value)
@@ -200,6 +243,7 @@ useSeoMeta({
                   <span class="font-medium">{{ option.label }}</span>
                   <span
                     class="w-2 h-2 rounded-full bg-pink-200"
+                    aria-hidden="true"
                   />
                 </button>
               </div>
@@ -233,8 +277,8 @@ useSeoMeta({
       <!-- Main Content -->
       <div class="lg:col-span-3">
         <!-- Hero Header -->
-        <div class="mb-10">
-          <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-6">
+        <div class="mb-6 lg:mb-10">
+          <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight mb-4 lg:mb-6">
             Protein-Rezepte, die <br>
             <span class="text-primary relative underline decoration-wavy decoration-pink-200 underline-offset-8 decoration-4">
               wirklich schmecken.
@@ -244,6 +288,113 @@ useSeoMeta({
             Einfache High-Protein Rezepte für deine Fitnessziele. Optimiert für Geschmack und Leistung, in wenigen Minuten fertig.
           </p>
         </div>
+
+        <!-- Mobile Filter Bar -->
+        <div
+          ref="mobileFilterBar"
+          :class="[
+            'lg:hidden sticky top-0 z-20 bg-white dark:bg-neutral-950 -mx-4 px-4 py-4 transition-transform duration-300 shadow-sm',
+            showMobileFilters ? 'translate-y-0' : '-translate-y-full'
+          ]"
+        >
+          <div class="space-y-3">
+            <!-- Category Chips - Horizontal Scroll -->
+            <div class="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+              <button
+                v-for="option in categoryOptions"
+                :key="option.value"
+                type="button"
+                :aria-label="`Kategorie ${option.label} ${isSelected(option.value) ? 'entfernen' : 'auswählen'}`"
+                :aria-pressed="isSelected(option.value)"
+                :class="[
+                  'flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors',
+                  isSelected(option.value)
+                    ? 'bg-primary text-white'
+                    : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300'
+                ]"
+                @click="toggleCategory(option.value)"
+              >
+                {{ option.label }}
+              </button>
+            </div>
+
+            <!-- Sort & Filter Row -->
+            <div class="flex items-center gap-3">
+              <USelect
+                v-model="sortBy"
+                :items="sortOptions"
+                class="flex-1"
+                aria-label="Sortieren nach"
+              />
+              <UButton
+                icon="i-lucide-sliders-horizontal"
+                color="neutral"
+                variant="soft"
+                size="lg"
+                aria-label="Weitere Filter öffnen"
+                @click="mobileFiltersOpen = true"
+              >
+                <UBadge
+                  v-if="activeFilterCount > 0"
+                  color="primary"
+                  variant="solid"
+                  size="sm"
+                >
+                  {{ activeFilterCount }}
+                </UBadge>
+              </UButton>
+            </div>
+
+            <!-- Active Filters Display -->
+            <div
+              v-if="hasActiveFilters"
+              class="flex items-center gap-2 flex-wrap"
+            >
+              <span class="text-sm text-neutral-500">Aktiv:</span>
+              <UBadge
+                v-if="selectedDifficulty !== 'alle'"
+                color="primary"
+                variant="subtle"
+                class="cursor-pointer"
+                @click="selectedDifficulty = 'alle'"
+              >
+                {{ difficultyOptions.find(o => o.value === selectedDifficulty)?.label }}
+                <UIcon
+                  name="i-lucide-x"
+                  class="w-3 h-3 ml-1"
+                />
+              </UBadge>
+              <UBadge
+                v-if="selectedPrepTime !== 'alle'"
+                color="primary"
+                variant="subtle"
+                class="cursor-pointer"
+                @click="selectedPrepTime = 'alle'"
+              >
+                {{ prepTimeOptions.find(o => o.value === selectedPrepTime)?.label }}
+                <UIcon
+                  name="i-lucide-x"
+                  class="w-3 h-3 ml-1"
+                />
+              </UBadge>
+              <button
+                type="button"
+                class="text-sm text-primary hover:underline"
+                @click="resetFilters"
+              >
+                Alle löschen
+              </button>
+            </div>
+
+            <!-- Results Count -->
+            <p class="text-sm text-neutral-500">
+              {{ filteredRecipes.length }} Rezepte
+            </p>
+          </div>
+        </div>
+
+        <!-- Spacer for sticky filter bar -->
+        <div class="lg:hidden h-4" />
 
         <!-- Recipe Grid -->
         <div
@@ -261,7 +412,7 @@ useSeoMeta({
 
         <div
           v-else
-          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"
         >
           <RecipeCard
             v-for="recipe in filteredRecipes"
@@ -271,26 +422,6 @@ useSeoMeta({
         </div>
       </div>
     </div>
-
-    <!-- Mobile Filter Button -->
-    <UButton
-      icon="i-lucide-sliders-horizontal"
-      size="lg"
-      color="primary"
-      class="lg:hidden fixed bottom-6 right-6 shadow-lg cursor-pointer"
-      @click="mobileFiltersOpen = true"
-    >
-      Filter
-      <UBadge
-        v-if="activeFilterCount > 0"
-        color="neutral"
-        variant="solid"
-        size="sm"
-        class="ml-1"
-      >
-        {{ activeFilterCount }}
-      </UBadge>
-    </UButton>
 
     <!-- Mobile Filter Slideover -->
     <USlideover
@@ -302,13 +433,18 @@ useSeoMeta({
         <div class="space-y-6">
           <!-- Sort -->
           <div>
-            <label class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2 block">
+            <label
+              id="sort-label-mobile"
+              class="text-xs font-semibold text-neutral-500 uppercase tracking-wider mb-2 block"
+            >
               Sortieren nach
             </label>
             <USelect
               v-model="sortBy"
               :items="sortOptions"
               class="w-full"
+              aria-label="Sortieren nach"
+              aria-labelledby="sort-label-mobile"
             />
           </div>
 
@@ -321,6 +457,9 @@ useSeoMeta({
               <button
                 v-for="option in categoryOptions"
                 :key="option.value"
+                type="button"
+                :aria-label="`Kategorie ${option.label} ${isSelected(option.value) ? 'entfernen' : 'auswählen'}`"
+                :aria-pressed="isSelected(option.value)"
                 :class="[
                   'w-full flex items-center justify-between px-4 py-2.5 rounded-lg text-left text-sm transition-colors cursor-pointer',
                   isSelected(option.value)
@@ -332,6 +471,7 @@ useSeoMeta({
                 <span class="font-medium">{{ option.label }}</span>
                 <span
                   class="w-2 h-2 rounded-full bg-pink-200"
+                  aria-hidden="true"
                 />
               </button>
             </div>

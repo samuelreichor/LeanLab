@@ -86,6 +86,7 @@ useHead({
     <HomeHero :recipes="recipes ?? []" />
     <HomeFeatured :recipes="featuredRecipes" />
     <HomeCategories />
+    <NewsletterSection />
     <HomeBenefits />
   </div>
 </template>

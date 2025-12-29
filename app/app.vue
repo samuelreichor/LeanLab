@@ -66,9 +66,9 @@ useSeoMeta({
   <UApp :toaster="{ expand: false }">
     <AppHeader />
 
-    <UMain>
+    <main id="main-content">
       <NuxtPage />
-    </UMain>
+    </main>
 
     <AppFooter />
 

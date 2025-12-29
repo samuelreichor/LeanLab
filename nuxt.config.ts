@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true
   },
+
   app: {
     head: {
       titleTemplate: '%s | LeanLab',
@@ -43,6 +44,11 @@ export default defineNuxtConfig({
         '/'
       ]
     }
+  },
+
+  runtimeConfig: {
+    mailchimpApiKey: process.env.MAILCHIMP_API_KEY,
+    mailchimpAudienceId: process.env.MAILCHIMP_AUDIENCE_ID
   },
 
   eslint: {

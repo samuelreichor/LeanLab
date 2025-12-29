@@ -24,7 +24,7 @@ const benefits = [
 </script>
 
 <template>
-  <section class="pt-12 md:pt-20">
+  <section class="pt-12 md:pt-16">
     <UContainer>
       <div class="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12">
         <div class="text-center mb-10">

@@ -18,9 +18,9 @@ defineProps<{
 </script>
 
 <template>
-  <section class="pt-12 md:pt-20">
+  <section class="pt-12 md:pt-16">
     <UContainer>
-      <div class="flex items-end justify-between mb-8">
+      <div class="flex items-end justify-between mb-6 md:mb-8">
         <div>
           <h2 class="text-2xl md:text-3xl font-bold mb-2">
             Beliebte Rezepte
@@ -41,7 +41,7 @@ defineProps<{
         </NuxtLink>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <RecipeCard
           v-for="recipe in recipes"
           :key="recipe.path"

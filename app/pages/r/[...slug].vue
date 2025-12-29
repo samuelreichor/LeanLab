@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const route = useRoute()
+useWakeLock({ autoActivate: true })
 
 const slug = computed(() => {
   const slugParam = route.params.slug
@@ -13,6 +14,11 @@ const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
   queryCollection('recipes').path(`/r/${slug.value}`).first()
 )
 
+// Fetch all recipes for similar recipes section
+const { data: allRecipes } = await useAsyncData('all-recipes', () =>
+  queryCollection('recipes').all()
+)
+
 if (!recipe.value) {
   throw createError({
     statusCode: 404,
@@ -21,6 +27,29 @@ if (!recipe.value) {
 }
 
 const servings = ref(recipe.value.servings ?? 4)
+
+// Find similar recipes based on shared categories
+const similarRecipes = computed(() => {
+  if (!allRecipes.value || !recipe.value?.category) return []
+
+  const currentCategories = recipe.value.category
+  const currentPath = recipe.value.path
+
+  return allRecipes.value
+    .filter((r) => {
+      // Exclude current recipe
+      if (r.path === currentPath) return false
+      // Check for shared categories
+      return r.category?.some(cat => currentCategories.includes(cat))
+    })
+    .sort((a, b) => {
+      // Sort by number of shared categories (most similar first)
+      const aShared = a.category?.filter(cat => currentCategories.includes(cat)).length ?? 0
+      const bShared = b.category?.filter(cat => currentCategories.includes(cat)).length ?? 0
+      return bShared - aShared
+    })
+    .slice(0, 3) // Limit to 3 similar recipes
+})
 
 function scrollToIngredients() {
   document.getElementById('ingredients')?.scrollIntoView({ behavior: 'smooth' })
@@ -47,13 +76,14 @@ useSeoMeta({
       :difficulty="recipe.difficulty"
     />
 
-    <div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:gap-x-8">
       <div
         id="ingredients"
-        class="lg:col-span-1 space-y-4 lg:sticky lg:top-4 lg:self-start"
+        class="lg:col-span-1 space-y-4 lg:sticky lg:top-0 lg:self-start"
       >
         <RecipeIngredients
           v-model:servings="servings"
+          class="mt-4 md:mt-8"
           :ingredients="recipe.ingredients"
           :base-servings="recipe.servings ?? 4"
         />
@@ -61,7 +91,7 @@ useSeoMeta({
         <RecipeMacros :macros="recipe.macros" />
       </div>
 
-      <div class="lg:col-span-2">
+      <div class="lg:col-span-2 mt-12 md:mt-8">
         <ContentRenderer
           :value="recipe"
           class="prose prose-neutral dark:prose-invert max-w-none [&>*:first-child]:mt-0"
@@ -69,12 +99,31 @@ useSeoMeta({
       </div>
     </div>
 
+    <!-- Similar Recipes Section -->
+    <section
+      v-if="similarRecipes.length > 0"
+      class="mt-12 md:mt-16 pt-12 md:pt-16 border-t border-neutral-200 dark:border-neutral-800"
+    >
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">
+        Ähnliche Rezepte
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <RecipeCard
+          v-for="similarRecipe in similarRecipes"
+          :key="similarRecipe.path"
+          :recipe="similarRecipe"
+        />
+      </div>
+    </section>
+
     <UButton
-      icon="i-lucide-list"
+      icon="i-lucide-utensils"
       size="lg"
       color="primary"
-      class="lg:hidden fixed bottom-6 right-6 shadow-lg"
+      class="lg:hidden fixed bottom-6 right-6 shadow-lg z-50"
       @click="scrollToIngredients"
-    />
+    >
+      Zutaten
+    </UButton>
   </UContainer>
 </template>

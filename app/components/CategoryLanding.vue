@@ -154,6 +154,7 @@ useHead({
         :items="sortOptions"
         size="xl"
         class="w-48"
+        aria-label="Rezepte sortieren nach"
       />
     </div>
 
