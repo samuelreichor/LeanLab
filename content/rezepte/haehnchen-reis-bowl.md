@@ -1,7 +1,7 @@
 ---
 title: Hähnchen Reis Bowl
 description: Proteinreiche Bowl mit zartem Hähnchen, frischem Gemüse und aromatischem Reis - perfekt für Meal Prep
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/haehnchen-reis-bowl.jpeg
 category:
   - meal-prep
   - muskel-aufbau

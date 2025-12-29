@@ -1,7 +1,7 @@
 ---
 title: Lachs mit Süßkartoffel
 description: Saftiger Ofenlachs auf Süßkartoffelbett mit Omega-3 Fettsäuren
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/lachs-suesskartoffel.jpeg
 category:
   - muskel-aufbau
 prepTime: 45

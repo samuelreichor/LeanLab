@@ -1,7 +1,7 @@
 ---
 title: Protein Chili con Carne
 description: Würziges Chili mit extra viel Hackfleisch - ideal für Meal Prep
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/chili-con-carne.jpeg
 category:
   - meal-prep
   - muskel-aufbau

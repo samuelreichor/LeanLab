@@ -1,7 +1,7 @@
 ---
 title: Cremiges Linsen Dal
 description: Aromatisches indisches Linsengericht - perfekt zum Vorkochen für die ganze Woche
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/linsen-dal.jpeg
 category:
   - vegetarisch
   - meal-prep

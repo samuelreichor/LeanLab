@@ -1,7 +1,7 @@
 ---
 title: Protein Overnight Oats
 description: Cremige Overnight Oats mit viel Protein - am Abend zubereiten, morgens genießen
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/overnight-oats.jpeg
 category:
   - meal-prep
   - vegetarisch
@@ -9,9 +9,9 @@ prepTime: 10
 difficulty: einfach
 servings: 1
 macros:
-  kcal: 420
-  protein: 32
-  carbs: 48
+  kcal: 480
+  protein: 35
+  carbs: 55
   fat: 12
 ingredients:
   - name: Haferflocken

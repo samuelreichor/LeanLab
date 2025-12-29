@@ -1,17 +1,17 @@
 ---
 title: Thunfisch Protein Wrap
 description: Schneller Low-Carb Wrap mit Thunfisch - ideal für unterwegs
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/thunfisch-wrap.jpeg
 category:
   - abnehmen
 prepTime: 8
 difficulty: einfach
 servings: 1
 macros:
-  kcal: 290
-  protein: 35
-  carbs: 18
-  fat: 10
+  kcal: 350
+  protein: 40
+  carbs: 28
+  fat: 6
 ingredients:
   - name: Thunfisch (im eigenen Saft)
     amount: 150

@@ -1,17 +1,17 @@
 ---
 title: Rindersteak mit Ofengemüse
 description: Saftiges Medium-Rare Steak mit buntem Röstgemüse - das perfekte Fitness-Dinner
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/rindersteak-gemuese.jpeg
 category:
   - muskel-aufbau
 prepTime: 40
 difficulty: schwierig
 servings: 2
 macros:
-  kcal: 620
-  protein: 52
-  carbs: 22
-  fat: 35
+  kcal: 650
+  protein: 45
+  carbs: 15
+  fat: 45
 ingredients:
   - name: Rinderfilet
     amount: 400

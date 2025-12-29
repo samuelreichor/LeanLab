@@ -1,7 +1,7 @@
 ---
 title: Protein Pancakes
 description: Fluffige Pancakes mit extra Protein - der perfekte Start in den Tag
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/protein-pancakes.jpeg
 category:
   - vegetarisch
 prepTime: 15

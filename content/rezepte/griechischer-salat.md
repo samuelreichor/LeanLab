@@ -1,7 +1,7 @@
 ---
 title: Griechischer Salat mit Feta
 description: Frischer mediterraner Salat mit cremigem Feta - kalorienarm und sättigend
-image: /recipes/haehnchen-reis-bowl.png
+image: /recipes/griechischer-salat.jpg
 category:
   - vegetarisch
   - abnehmen
@@ -9,10 +9,10 @@ prepTime: 10
 difficulty: einfach
 servings: 2
 macros:
-  kcal: 280
-  protein: 12
-  carbs: 8
-  fat: 22
+  kcal: 420
+  protein: 14
+  carbs: 12
+  fat: 32
 ingredients:
   - name: Gurke
     amount: 1
