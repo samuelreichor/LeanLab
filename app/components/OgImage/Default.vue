@@ -6,7 +6,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="h-full w-full flex items-start justify-start border-solid bg-[#537B6C] border-0" style="font-family: 'Public Sans'">
+  <div
+    class="h-full w-full flex items-start justify-start border-solid bg-[#537B6C] border-0"
+    style="font-family: 'Public Sans'"
+  >
     <div class="rounded-2xl mx-16 mt-16">
       <svg
         class="h-[60px] w-[235px]"

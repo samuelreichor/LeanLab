@@ -45,15 +45,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     name: 'Fit Kitchen'
   },
 
-  ogImage: {
-    fonts: [
-      // will load the Noto Sans font from Google fonts
-      'Public+Sans:400',
-      'Public+Sans:600',
-      'Public+Sans:700',
-    ]
-  },
-
   content: {
     renderer: {
       anchorLinks: false
@@ -92,5 +83,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         braceStyle: '1tbs'
       }
     }
+  },
+
+  ogImage: {
+    fonts: [
+      // will load the Noto Sans font from Google fonts
+      'Public+Sans:400',
+      'Public+Sans:600',
+      'Public+Sans:700'
+    ]
   }
 })

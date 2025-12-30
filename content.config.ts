@@ -34,5 +34,15 @@ export const collections = {
         ingredients: z.array(ingredientSchema)
       })
     })
+  ),
+  pages: defineCollection(
+    asSeoCollection({
+      source: '*.md',
+      type: 'page',
+      schema: z.object({
+        title: z.string(),
+        description: z.string()
+      })
+    })
   )
 }
