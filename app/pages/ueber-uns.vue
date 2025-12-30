@@ -194,22 +194,12 @@ const values = [
           </p>
           <div class="flex flex-col sm:flex-row gap-4">
             <UButton
-              to="mailto:hallo@fit-kitchen.at"
+              to="mailto:samuelreichor@gmail.com"
               size="xl"
               color="primary"
               leading-icon="i-lucide-mail"
             >
-              hallo@fit-kitchen.at
-            </UButton>
-            <UButton
-              to="https://instagram.com/fit.kitchen.at"
-              target="_blank"
-              size="xl"
-              variant="outline"
-              color="neutral"
-              leading-icon="i-simple-icons-instagram"
-            >
-              @fit.kitchen.at
+              samuelreichor@gmail.com
             </UButton>
           </div>
         </div>

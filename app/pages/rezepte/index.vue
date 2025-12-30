@@ -335,12 +335,12 @@ useSeoMeta({
           </p>
         </div>
 
-        <div id="top-results"></div>
+        <div id="top-results" />
         <!-- Mobile Filter Bar -->
         <div
           ref="mobileFilterBar"
           :class="[
-            'lg:hidden sticky top-0 z-20 bg-white -mx-4 px-4 py-4 transition-transform duration-300',
+            'lg:hidden sticky top-0 z-20 bg-white -mx-4 px-4 py-4 transition-transform duration-300'
           ]"
         >
           <div class="space-y-3">
