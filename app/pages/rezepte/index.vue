@@ -101,12 +101,15 @@ const sortOptions = [
   { value: 'kcal-desc', label: 'Kalorien (höchste)' }
 ]
 
-function toggleCategory(value: string) {
+function toggleCategory(value: string, scroll = false) {
   const index = selectedCategories.value.indexOf(value)
   if (index === -1) {
     selectedCategories.value.push(value)
   } else {
     selectedCategories.value.splice(index, 1)
+  }
+  if (scroll) {
+    nextTick(() => scrollToResults())
   }
 }
 
@@ -126,6 +129,26 @@ const hasActiveFilters = computed(() => {
     || selectedDifficulty.value !== 'alle'
     || selectedPrepTime.value !== 'alle'
     || sortBy.value !== 'newest'
+})
+
+// Scroll to results on mobile when filters change
+function scrollToResults() {
+  if (window.innerWidth < 1024) {
+    document.getElementById('top-results')?.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
+// Watch filter changes on mobile
+watch(sortBy, () => {
+  nextTick(() => scrollToResults())
+})
+
+watch(selectedDifficulty, () => {
+  nextTick(() => scrollToResults())
+})
+
+watch(selectedPrepTime, () => {
+  nextTick(() => scrollToResults())
 })
 
 const activeFilterCount = computed(() => {
@@ -191,41 +214,6 @@ const filteredRecipes = computed(() => {
 useSeoMeta({
   title: 'Rezepte',
   description: 'Einfache High-Protein Rezepte für deine Fitnessziele'
-})
-
-// Smart sticky filter bar
-const showMobileFilters = ref(true)
-const lastScrollY = ref(0)
-const mobileFilterBar = useTemplateRef<HTMLElement>('mobileFilterBar')
-const filterBarOffset = ref(0)
-
-function handleScroll() {
-  const currentScrollY = window.scrollY
-
-  // Only start hiding after the filter bar would be sticky
-  if (currentScrollY < filterBarOffset.value) {
-    showMobileFilters.value = true
-  } else if (currentScrollY < lastScrollY.value) {
-    // Scrolling up - show
-    showMobileFilters.value = true
-  } else if (currentScrollY > lastScrollY.value + 10) {
-    // Scrolling down (with threshold to avoid jitter) - hide
-    showMobileFilters.value = false
-  }
-
-  lastScrollY.value = currentScrollY
-}
-
-onMounted(() => {
-  // Get the initial offset of the filter bar
-  if (mobileFilterBar.value) {
-    filterBarOffset.value = mobileFilterBar.value.offsetTop
-  }
-  window.addEventListener('scroll', handleScroll, { passive: true })
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
 })
 </script>
 
@@ -347,12 +335,12 @@ onUnmounted(() => {
           </p>
         </div>
 
+        <div id="top-results"></div>
         <!-- Mobile Filter Bar -->
         <div
           ref="mobileFilterBar"
           :class="[
-            'lg:hidden sticky top-0 z-20 bg-white dark:bg-neutral-950 -mx-4 px-4 py-4 transition-transform duration-300 shadow-sm',
-            showMobileFilters ? 'translate-y-0' : '-translate-y-full'
+            'lg:hidden sticky top-0 z-20 bg-white -mx-4 px-4 py-4 transition-transform duration-300',
           ]"
         >
           <div class="space-y-3">
@@ -370,7 +358,7 @@ onUnmounted(() => {
                     ? 'bg-primary text-white'
                     : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300'
                 ]"
-                @click="toggleCategory(option.value)"
+                @click="toggleCategory(option.value, true)"
               >
                 {{ option.label }}
               </button>
