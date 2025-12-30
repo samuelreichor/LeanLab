@@ -38,6 +38,7 @@
 :root {
   --ui-container: var(--container-8xl);
   --ui-header-height: --spacing(20);
+  --ui-text-highlighted: var(--ui-text);
 }
 
 /* Hide scrollbar but keep functionality */

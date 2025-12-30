@@ -1,12 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/image',
-    '@nuxt/ui',
-    '@nuxt/content'
-  ],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/seo', '@nuxt/content'],
 
   devtools: {
     enabled: true
@@ -14,8 +9,12 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: {
+        lang: 'de'
+      },
       titleTemplate: '%s | Fit Kitchen',
       meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'robots', content: 'index, follow' },
         { name: 'apple-mobile-web-app-title', content: 'Fit Kitchen' }
       ],
@@ -40,6 +39,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   },
 
   css: ['~/assets/css/main.css'],
+
+  site: {
+    url: 'https://fit-kitchen.at',
+    name: 'Fit Kitchen'
+  },
+
+  ogImage: {
+    fonts: [
+      // will load the Noto Sans font from Google fonts
+      'Public+Sans:400',
+      'Public+Sans:600',
+      'Public+Sans:700',
+    ]
+  },
 
   content: {
     renderer: {

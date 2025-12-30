@@ -5,6 +5,8 @@ const { data: searchFiles } = useLazyAsyncData('search', () => queryCollectionSe
 })
 const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('recipes'))
 
+defineOgImageComponent('Default')
+
 // Quick links for search
 const searchLinks = [
   {
@@ -33,24 +35,6 @@ const searchLinks = [
     to: '/rezepte/vegetarisch'
   }
 ]
-
-useHead({
-  meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ],
-  link: [
-    { rel: 'icon', href: '/favicon.ico' }
-  ],
-  htmlAttrs: {
-    lang: 'de'
-  }
-})
-
-useSeoMeta({
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/landing-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/landing-light.png',
-  twitterCard: 'summary_large_image'
-})
 </script>
 
 <template>

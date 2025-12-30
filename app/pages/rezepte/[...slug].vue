@@ -60,6 +60,13 @@ useSeoMeta({
   description: recipe.value.description,
   ogImage: recipe.value.image
 })
+
+defineOgImageComponent('Recipe', {
+  title: recipe.value.title,
+  prepTime: recipe.value.prepTime,
+  protein: recipe.value.macros?.protein,
+  kcal: recipe.value.macros?.kcal
+})
 </script>
 
 <template>

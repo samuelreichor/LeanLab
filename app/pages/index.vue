@@ -17,7 +17,6 @@ useSeoMeta({
   description: 'Entdecke einfache High-Protein Rezepte für Muskelaufbau, Abnehmen und Meal Prep. Schnell zubereitet, mit berechneten Makros für deine Fitnessziele.',
   ogTitle: 'Fit Kitchen - High-Protein Rezepte für Fitness',
   ogDescription: 'Einfache Fitness-Rezepte mit berechneten Makros. Optimiert für Muskelaufbau und Abnehmen.',
-  ogImage: '/og-image.png',
   ogUrl: 'https://fit-kitchen.at',
   ogType: 'website',
   twitterCard: 'summary_large_image',

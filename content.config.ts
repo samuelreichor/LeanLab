@@ -1,4 +1,5 @@
 import { defineCollection, z } from '@nuxt/content'
+import { asSeoCollection } from '@nuxtjs/seo/content'
 
 const categoryEnum = z.enum(['meal-prep', 'muskel-aufbau', 'abnehmen', 'vegetarisch'])
 const difficultyEnum = z.enum(['einfach', 'mittel', 'schwierig'])
@@ -17,19 +18,21 @@ const macrosSchema = z.object({
 })
 
 export const collections = {
-  recipes: defineCollection({
-    source: 'rezepte/**/*.md',
-    type: 'page',
-    schema: z.object({
-      title: z.string(),
-      description: z.string(),
-      image: z.string().editor({ input: 'media' }),
-      category: z.array(categoryEnum),
-      prepTime: z.number(),
-      difficulty: difficultyEnum,
-      servings: z.number().default(4),
-      macros: macrosSchema,
-      ingredients: z.array(ingredientSchema)
+  recipes: defineCollection(
+    asSeoCollection({
+      source: 'rezepte/**/*.md',
+      type: 'page',
+      schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        image: z.string().editor({ input: 'media' }),
+        category: z.array(categoryEnum),
+        prepTime: z.number(),
+        difficulty: difficultyEnum,
+        servings: z.number().default(4),
+        macros: macrosSchema,
+        ingredients: z.array(ingredientSchema)
+      })
     })
-  })
+  )
 }
