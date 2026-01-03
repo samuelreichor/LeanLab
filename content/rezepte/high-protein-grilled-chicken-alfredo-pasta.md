@@ -6,7 +6,6 @@ date: 2026-01-03
 category:
   - meal-prep
   - muskel-aufbau
-  - abnehmen
 prepTime: 45
 difficulty: mittel
 servings: 3
@@ -40,7 +39,7 @@ ingredients:
   - name: Olivenöl
     amount: 2
     unit: EL
-  - name: Helle Butter (Light Butter)
+  - name: Light Butter
     amount: 3
     unit: EL
   - name: Zwiebel
@@ -55,14 +54,14 @@ ingredients:
   - name: Kondensmilch (fettarm)
     amount: 300
     unit: ml
-  - name: Heller Frischkäse
+  - name: Light Frischkäse
     amount: 130
     unit: g
   - name: Parmesan (gerieben)
     amount: 30
     unit: g
-  - name: Gekochte Pasta (z.B. Fettuccine)
-    amount: 520
+  - name: Nudeln (z.B. Fettuccine)
+    amount: 250g
     unit: g
 ---
 
@@ -72,18 +71,18 @@ ingredients:
 Die Hähnchenbrust in mundgerechte Würfel schneiden. Das Fleisch in eine Schüssel geben und mit Salz, einem Teil der italienischen Kräuter, einem Teil der Petersilie, Chiliflocken, Knoblauchpulver, einem Teil des Paprikapulvers und dem Olivenöl großzügig würzen. Alles gründlich mit den Händen vermischen, bis das Hähnchen gleichmäßig überzogen ist.
 
 ### Schritt 2: Hähnchen braten
-Eine Pfanne auf mittelhoher Hitze erhitzen und einen Teil der hellen Butter schmelzen lassen. Die gewürzten Hähnchenwürfel hineingeben und braten, bis sie goldbraun und durchgegart sind. Kurz vor Ende der Garzeit die restliche Butter für das Hähnchen hinzufügen und untermischen. Das gebratene Fleisch aus der Pfanne nehmen und beiseite stellen.
+Eine Pfanne auf mittelhoher Hitze erhitzen und einen Teil der Butter schmelzen lassen. Die gewürzten Hähnchenwürfel hineingeben und braten, bis sie goldbraun und durchgegart sind. Kurz vor Ende der Garzeit die restliche Butter für das Hähnchen hinzufügen und untermischen. Das gebratene Fleisch aus der Pfanne nehmen und beiseite stellen.
 
 ### Schritt 3: Soßenbasis zubereiten
 In derselben Pfanne die gehackte Zwiebel und den gehackten Knoblauch anbraten, bis sie weich und glasig sind. Die restlichen Gewürze (Salz, Petersilie, italienische Kräuter, Paprika, Chiliflocken) hinzufügen und kurz mitbraten, bis sie duften.
 
 ### Schritt 4: Soße fertigstellen
-Die Tomatensoße in die Pfanne geben und mit der Zwiebel-Knoblauch-Mischung vermengen. Die Soße köcheln lassen, bis sie eindickt. Anschließend die Kondensmilch, den hellen Frischkäse und den geriebenen Parmesan hinzufügen. Alles gründlich verrühren, bis der Käse geschmolzen ist und eine cremige Konsistenz entsteht.
+Die Tomatensoße in die Pfanne geben und mit der Zwiebel-Knoblauch-Mischung vermengen. Die Soße köcheln lassen, bis sie eindickt. Anschließend die Kondensmilch, den Frischkäse und den geriebenen Parmesan hinzufügen. Alles gründlich verrühren, bis der Käse geschmolzen ist und eine cremige Konsistenz entsteht.
 
 ### Schritt 5: Pasta und Servieren
 Die gekochte Pasta direkt in die cremige Soße geben und vermischen, bis die Nudeln vollständig bedeckt sind. Das Gericht auf Behälter aufteilen und die gebratenen Hähnchenwürfel darauf anrichten. Optional mit frischer Petersilie garnieren.
 
 ## Tipps
 - **Röstaromen nutzen**: Die Verwendung derselben Pfanne für Fleisch und Soße sorgt für einen tieferen Geschmack durch den Bratensatz.
-- **Konsistenz**: Die Soße sollte so lange köcheln, bis sie die gewünschte Dicke erreicht hat, bevor die Pasta hinzugefügt wird.
+- **Konsistenz**: Die Soße sollte so lange köcheln, bis sie cremig ist, bevor die Pasta hinzugefügt wird.
 - **Light-Produkte**: Für die angegebenen Nährwerte ist die Verwendung von fettarmer Kondensmilch und leichtem Frischkäse entscheidend.
