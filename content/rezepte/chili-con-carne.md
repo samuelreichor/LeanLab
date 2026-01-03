@@ -8,12 +8,12 @@ category:
   - muskel-aufbau
 prepTime: 75
 difficulty: mittel
-servings: 8
+servings: 4
 macros:
-  kcal: 380
-  protein: 32
-  carbs: 28
-  fat: 16
+  kcal: 772
+  protein: 49
+  carbs: 52
+  fat: 27
 ingredients:
   - name: Rinderhackfleisch (mager)
     amount: 800
@@ -22,7 +22,7 @@ ingredients:
     amount: 500
     unit: g
   - name: Mais (Dose)
-    amount: 300
+    amount: 200
     unit: g
   - name: Tomaten (passiert)
     amount: 800
@@ -31,7 +31,7 @@ ingredients:
     amount: 2
     unit: Stück
   - name: Knoblauch
-    amount: 4
+    amount: 3
     unit: Zehen
   - name: Paprika (rot)
     amount: 2
@@ -46,7 +46,7 @@ ingredients:
     amount: 1
     unit: EL
   - name: Rinderbrühe
-    amount: 250
+    amount: 500
     unit: ml
 ---
 
