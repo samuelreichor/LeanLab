@@ -344,9 +344,7 @@ useSeoMeta({
         <!-- Mobile Filter Bar -->
         <div
           ref="mobileFilterBar"
-          :class="[
-            'lg:hidden sticky top-0 z-20 bg-white -mx-4 px-4 py-4 transition-transform duration-300'
-          ]"
+          class="lg:hidden sticky top-0 z-20 bg-white dark:bg-neutral-900 -mx-4 px-4 py-4"
         >
           <div class="space-y-3">
             <!-- Category Chips - Horizontal Scroll -->

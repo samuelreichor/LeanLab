@@ -83,24 +83,26 @@ defineOgImageComponent('Recipe', {
       :difficulty="recipe.difficulty"
     />
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 md:gap-x-8">
+    <RecipeMacros
+      :macros="recipe.macros"
+      class="mt-6"
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 md:gap-x-8 mt-6 md:mt-10">
       <div
         id="ingredients"
-        class="lg:col-span-1 space-y-4 lg:sticky lg:top-0 lg:self-start"
+        class="lg:col-span-1 space-y-4 lg:sticky lg:top-4 lg:self-start"
       >
         <RecipeIngredients
           v-model:servings="servings"
-          class="mt-4 md:mt-8"
           :ingredients="recipe.ingredients"
           :base-servings="recipe.servings ?? 4"
         />
 
-        <RecipeMacros :macros="recipe.macros" />
-
-        <RecipeAuthor class="mt-4" />
+        <RecipeAuthor class="mt-4 print:hidden" />
       </div>
 
-      <div class="lg:col-span-2 mt-12 md:mt-8">
+      <div class="lg:col-span-2 mt-8 md:mt-0">
         <ContentRenderer
           :value="recipe"
           class="prose prose-neutral dark:prose-invert max-w-none [&>*:first-child]:mt-0"
@@ -111,7 +113,7 @@ defineOgImageComponent('Recipe', {
     <!-- Similar Recipes Section -->
     <section
       v-if="similarRecipes.length > 0"
-      class="mt-12 md:mt-16 pt-12 md:pt-16 border-t border-neutral-200 dark:border-neutral-800"
+      class="print:hidden mt-12 md:mt-16 pt-12 md:pt-16 border-t border-neutral-200"
     >
       <h2 class="text-2xl md:text-3xl font-bold mb-6">
         Ähnliche Rezepte
@@ -129,7 +131,7 @@ defineOgImageComponent('Recipe', {
       icon="i-lucide-utensils"
       size="lg"
       color="primary"
-      class="lg:hidden fixed bottom-6 right-6 shadow-lg z-50"
+      class="lg:hidden fixed right-6 shadow-lg z-50 print:hidden bottom-[calc(1.5rem+env(safe-area-inset-bottom))]"
       @click="scrollToIngredients"
     >
       Zutaten

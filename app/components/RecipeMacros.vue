@@ -19,20 +19,18 @@ const macroItems = computed(() => [
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-3 p-4 bg-neutral-100 dark:bg-neutral-800 rounded-xl">
+  <div class="flex flex-wrap gap-4 md:gap-6">
     <div
       v-for="item in macroItems"
       :key="item.label"
-      class="flex items-center gap-2"
+      class="flex items-center gap-1.5"
     >
       <UIcon
         :name="item.icon"
         :class="['w-4 h-4', item.color]"
       />
-      <div class="flex flex-col">
-        <span class="font-semibold text-sm leading-tight">{{ item.value }}{{ item.unit }}</span>
-        <span class="text-neutral-500 text-xs">{{ item.label }}</span>
-      </div>
+      <span class="font-semibold">{{ item.value }}{{ item.unit }}</span>
+      <span class="text-neutral-500 text-sm">{{ item.label }}</span>
     </div>
   </div>
 </template>

@@ -29,20 +29,35 @@ function formatPrepTime(minutes: number): string {
   const mins = minutes % 60
   return mins > 0 ? `${hours} Std. ${mins} Min.` : `${hours} Std.`
 }
+
+function printRecipe() {
+  window.print()
+}
 </script>
 
 <template>
-  <!-- Mobile: Stacked layout -->
-  <div class="md:hidden">
-    <div class="relative w-full aspect-4/3 overflow-hidden rounded-2xl">
+  <div>
+    <!-- Bild im 16:9 Format mit max-Höhe -->
+    <div class="relative w-full aspect-video max-h-80 md:max-h-96 lg:max-h-[540px] overflow-hidden rounded-2xl">
       <NuxtImg
         :src="image"
         :alt="title"
         class="absolute inset-0 w-full h-full object-cover"
       />
+      <!-- Print Button oben rechts -->
+      <UButton
+        icon="i-lucide-printer"
+        variant="soft"
+        color="neutral"
+        size="lg"
+        class="absolute top-4 right-4 print:hidden"
+        aria-label="Rezept drucken"
+        @click="printRecipe"
+      />
     </div>
 
-    <div class="mt-4 space-y-3">
+    <!-- Text-Bereich unterhalb des Bildes -->
+    <div class="mt-4 md:mt-6 space-y-3">
       <div class="flex flex-wrap gap-2">
         <UBadge
           v-for="cat in category"
@@ -70,56 +85,10 @@ function formatPrepTime(minutes: number): string {
         </UBadge>
       </div>
 
-      <h1 class="text-2xl font-bold">
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold">
         {{ title }}
       </h1>
-      <p class="text-neutral-600 dark:text-neutral-400">
-        {{ description }}
-      </p>
-    </div>
-  </div>
-
-  <!-- Desktop: Overlay layout -->
-  <div class="hidden md:block relative w-full h-96 lg:h-112 overflow-hidden rounded-2xl">
-    <NuxtImg
-      :src="image"
-      :alt="title"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
-
-    <div class="absolute bottom-0 left-0 right-0 p-8">
-      <div class="flex flex-wrap gap-2 mb-4">
-        <UBadge
-          v-for="cat in category"
-          :key="cat"
-          color="primary"
-          variant="solid"
-        >
-          {{ categoryLabels[cat] || cat }}
-        </UBadge>
-        <UBadge
-          color="neutral"
-          variant="subtle"
-        >
-          <UIcon
-            name="i-lucide-clock"
-            class="w-3 h-3 mr-1"
-          />
-          {{ formatPrepTime(prepTime) }}
-        </UBadge>
-        <UBadge
-          :color="difficultyColors[difficulty] as any"
-          variant="subtle"
-        >
-          {{ difficulty.charAt(0).toUpperCase() + difficulty.slice(1) }}
-        </UBadge>
-      </div>
-
-      <h1 class="text-4xl lg:text-5xl font-bold text-white mb-2">
-        {{ title }}
-      </h1>
-      <p class="text-lg text-white/80 max-w-2xl">
+      <p class="text-neutral-600 dark:text-neutral-400 md:text-lg max-w-2xl">
         {{ description }}
       </p>
     </div>

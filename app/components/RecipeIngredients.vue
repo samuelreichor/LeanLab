@@ -41,7 +41,7 @@ function increase() {
 </script>
 
 <template>
-  <div class="bg-neutral-100 dark:bg-neutral-800 rounded-xl p-4">
+  <div class="bg-neutral-100 rounded-xl p-4">
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-lg font-semibold">
         Zutaten

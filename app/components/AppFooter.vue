@@ -55,7 +55,7 @@ const columns = [{
 
 <template>
   <USeparator
-    class="h-px mt-16 md:mt-20"
+    class="h-px mt-16 md:mt-20 print:hidden"
   />
 
   <UFooter :ui="{ top: 'border-b border-default' }">

@@ -50,3 +50,52 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Print styles */
+@media print {
+  * {
+    transition: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  header,
+  footer,
+  nav {
+    display: none !important;
+  }
+
+  .fixed {
+    display: none !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  .prose {
+    max-width: 100% !important;
+  }
+
+  .aspect-video {
+    aspect-ratio: auto;
+  }
+
+  .aspect-video img {
+    position: static !important;
+  }
+
+  /* Only avoid breaks for key elements */
+  h2, h3 {
+    break-after: avoid;
+  }
+
+  img, figure {
+    break-inside: avoid;
+  }
+
+  /* Hide borders on hidden elements */
+  .print\:hidden {
+    border: none !important;
+  }
+}
