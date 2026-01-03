@@ -27,6 +27,7 @@ export const collections = {
         description: z.string(),
         image: z.string().editor({ input: 'media' }),
         category: z.array(categoryEnum),
+        date: z.string().optional(),
         prepTime: z.number(),
         difficulty: difficultyEnum,
         servings: z.number().default(4),

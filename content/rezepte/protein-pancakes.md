@@ -2,6 +2,7 @@
 title: Protein Pancakes
 description: Fluffige Pancakes mit extra Protein - der perfekte Start in den Tag
 image: /recipes/protein-pancakes.jpeg
+date: '2024-11-25'
 category:
   - vegetarisch
 prepTime: 15

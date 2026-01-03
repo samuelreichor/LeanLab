@@ -164,12 +164,13 @@ const filteredRecipes = computed(() => {
   if (!recipes.value) return []
 
   let result = recipes.value.filter((recipe) => {
-    // Category filter
+    // Category filter (AND logic - recipe must have ALL selected categories)
     if (selectedCategories.value.length > 0) {
-      const hasCategory = recipe.category?.some(cat =>
-        selectedCategories.value.includes(cat)
+      const recipeCategories = recipe.category ?? []
+      const hasAllCategories = selectedCategories.value.every(cat =>
+        recipeCategories.includes(cat as typeof recipeCategories[number])
       )
-      if (!hasCategory) return false
+      if (!hasAllCategories) return false
     }
 
     // Difficulty filter
@@ -191,6 +192,10 @@ const filteredRecipes = computed(() => {
   // Sort
   result = [...result].sort((a, b) => {
     switch (sortBy.value) {
+      case 'newest':
+        return new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime()
+      case 'oldest':
+        return new Date(a.date ?? 0).getTime() - new Date(b.date ?? 0).getTime()
       case 'prep-asc':
         return (a.prepTime ?? 0) - (b.prepTime ?? 0)
       case 'prep-desc':

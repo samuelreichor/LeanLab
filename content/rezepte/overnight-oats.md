@@ -2,6 +2,7 @@
 title: Protein Overnight Oats
 description: Cremige Overnight Oats mit viel Protein - am Abend zubereiten, morgens genießen
 image: /recipes/overnight-oats.jpeg
+date: '2024-11-20'
 category:
   - meal-prep
   - vegetarisch

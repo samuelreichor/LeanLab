@@ -2,6 +2,7 @@
 title: Thunfisch Protein Wrap
 description: Schneller Low-Carb Wrap mit Thunfisch - ideal für unterwegs
 image: /recipes/thunfisch-wrap.jpeg
+date: '2024-12-05'
 category:
   - abnehmen
 prepTime: 8

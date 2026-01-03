@@ -2,6 +2,7 @@
 title: Rindersteak mit Ofengemüse
 description: Saftiges Medium-Rare Steak mit buntem Röstgemüse - das perfekte Fitness-Dinner
 image: /recipes/rindersteak-gemuese.jpeg
+date: '2024-12-01'
 category:
   - muskel-aufbau
 prepTime: 40

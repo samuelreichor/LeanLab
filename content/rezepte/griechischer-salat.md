@@ -2,6 +2,7 @@
 title: Griechischer Salat mit Feta
 description: Frischer mediterraner Salat mit cremigem Feta - kalorienarm und sättigend
 image: /recipes/griechischer-salat.jpg
+date: '2024-12-10'
 category:
   - vegetarisch
   - abnehmen

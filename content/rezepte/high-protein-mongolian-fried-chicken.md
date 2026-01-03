@@ -2,6 +2,7 @@
 title: High Protein Mongolian Fried Chicken
 description: Ein knuspriges, proteinreiches Hähnchengericht in einer würzigen mongolischen Soße, perfekt für Meal Prep und Muskelaufbau.
 image: /recipes/high-protein-mongolian-fried-chicken.webp
+date: '2024-12-15'
 category:
   - muskel-aufbau
   - meal-prep
