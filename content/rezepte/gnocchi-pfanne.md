@@ -6,15 +6,14 @@ date: 2026-01-04
 category:
   - vegetarisch
   - muskel-aufbau
-  - meal-prep
 prepTime: 25
 difficulty: leicht
-servings: 1
+servings: 2
 macros:
-  kcal: 1183
-  protein: 93
-  carbs: 104
-  fat: 39
+  kcal: 590
+  protein: 47
+  carbs: 52
+  fat: 19
 ingredients:
   - name: Gnocchi (frisch)
     amount: 500
