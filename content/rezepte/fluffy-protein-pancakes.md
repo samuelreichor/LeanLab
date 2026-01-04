@@ -6,7 +6,6 @@ date: 2026-01-04
 category:
   - abnehmen
   - vegetarisch
-  - meal-prep
 prepTime: 50
 difficulty: leicht
 servings: 5
