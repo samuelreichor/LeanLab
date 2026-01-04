@@ -2,7 +2,7 @@ import { defineCollection, z } from '@nuxt/content'
 import { asSeoCollection } from '@nuxtjs/seo/content'
 
 const categoryEnum = z.enum(['meal-prep', 'muskel-aufbau', 'abnehmen', 'vegetarisch'])
-const difficultyEnum = z.enum(['einfach', 'mittel', 'schwierig'])
+const difficultyEnum = z.enum(['leicht', 'mittel', 'schwierig'])
 
 const ingredientSchema = z.object({
   name: z.string(),

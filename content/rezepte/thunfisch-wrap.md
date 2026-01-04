@@ -6,7 +6,7 @@ date: '2024-12-05'
 category:
   - abnehmen
 prepTime: 8
-difficulty: einfach
+difficulty: leicht
 servings: 1
 macros:
   kcal: 350

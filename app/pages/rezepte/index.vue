@@ -78,15 +78,15 @@ const categoryOptions = [
 
 const difficultyOptions = [
   { value: 'alle', label: 'Alle' },
-  { value: 'einfach', label: 'Einfach' },
+  { value: 'leicht', label: 'Leicht' },
   { value: 'mittel', label: 'Mittel' },
   { value: 'schwierig', label: 'Schwierig' }
 ]
 
 const prepTimeOptions = [
   { value: 'alle', label: 'Alle' },
-  { value: 'schnell', label: 'Schnell (<20min)' },
-  { value: 'mittel', label: 'Mittel (20 - 60min)' },
+  { value: 'schnell', label: 'Schnell (<30min)' },
+  { value: 'mittel', label: 'Mittel (30 - 60min)' },
   { value: 'lang', label: 'Lang (>1h)' }
 ]
 
@@ -181,8 +181,8 @@ const filteredRecipes = computed(() => {
     // Prep time filter
     if (selectedPrepTime.value && selectedPrepTime.value !== 'alle') {
       const time = recipe.prepTime ?? 0
-      if (selectedPrepTime.value === 'schnell' && time >= 20) return false
-      if (selectedPrepTime.value === 'mittel' && (time < 20 || time > 60)) return false
+      if (selectedPrepTime.value === 'schnell' && time >= 30) return false
+      if (selectedPrepTime.value === 'mittel' && (time < 30 || time > 60)) return false
       if (selectedPrepTime.value === 'lang' && time <= 60) return false
     }
 
