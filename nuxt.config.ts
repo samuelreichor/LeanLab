@@ -46,15 +46,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     defaultLocale: 'de'
   },
 
-  schemaOrg: {
-    identity: {
-      type: 'Organization',
-      name: 'Fit Kitchen',
-      url: 'https://fit-kitchen.at',
-      logo: 'https://fit-kitchen.at/logo.png'
-    }
-  },
-
   content: {
     renderer: {
       anchorLinks: false
@@ -102,5 +93,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'Public+Sans:600',
       'Public+Sans:700'
     ]
+  },
+
+  schemaOrg: {
+    identity: {
+      type: 'Organization',
+      name: 'Fit Kitchen',
+      url: 'https://fit-kitchen.at',
+      logo: 'https://fit-kitchen.at/logo.png'
+    }
   }
 })
