@@ -22,7 +22,7 @@ const searchLinks = [
   {
     label: 'Muskelaufbau',
     icon: 'i-lucide-dumbbell',
-    to: '/rezepte/muskel-aufbau'
+    to: '/rezepte/muskelaufbau'
   },
   {
     label: 'Abnehmen',

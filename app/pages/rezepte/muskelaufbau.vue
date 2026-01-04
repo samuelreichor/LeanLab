@@ -10,7 +10,7 @@
       ogTitle: 'Muskelaufbau Rezepte | Fit Kitchen',
       ogDescription: 'High-Protein Rezepte für effektiven Muskelaufbau und Kraftsport.',
       ogImage: '/og-muskel-aufbau.png',
-      ogUrl: 'https://fit-kitchen.at/rezepte/muskel-aufbau'
+      ogUrl: 'https://fit-kitchen.at/rezepte/muskelaufbau'
     }"
   />
 </template>

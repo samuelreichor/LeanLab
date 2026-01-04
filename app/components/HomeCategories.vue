@@ -7,7 +7,7 @@ const categories = [
     icon: 'i-lucide-calendar'
   },
   {
-    slug: 'muskel-aufbau',
+    slug: 'muskelaufbau',
     label: 'Muskelaufbau',
     description: 'Proteinreiche Gerichte',
     icon: 'i-lucide-dumbbell'
