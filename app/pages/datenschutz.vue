@@ -8,9 +8,10 @@ useSeoMeta({
 useHead({
   script: [
     {
-      id: 'usercentrics-ppg',
-      'privacy-policy-id': '98d47c3b-5b2c-4d24-bf87-5dd4ca873ba6',
-      src: 'https://policygenerator.usercentrics.eu/api/privacy-policy'
+      'id': 'usercentrics-ppg',
+      'src': 'https://policygenerator.usercentrics.eu/api/privacy-policy',
+      // @ts-expect-error custom attribute for usercentrics
+      'privacy-policy-id': '98d47c3b-5b2c-4d24-bf87-5dd4ca873ba6'
     }
   ]
 })
