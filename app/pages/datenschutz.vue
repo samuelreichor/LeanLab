@@ -1,27 +1,33 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('datenschutz', () =>
-  queryCollection('pages').path('/datenschutz').first()
-)
-
 useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
+  title: 'Datenschutz',
+  description: 'Datenschutzerklärung von Fit Kitchen',
   robots: 'noindex, nofollow'
+})
+
+useHead({
+  script: [
+    {
+      id: 'usercentrics-ppg',
+      'privacy-policy-id': '98d47c3b-5b2c-4d24-bf87-5dd4ca873ba6',
+      src: 'https://policygenerator.usercentrics.eu/api/privacy-policy'
+    }
+  ]
 })
 </script>
 
 <template>
-  <UContainer class="py-8 md:py-12">
-    <h1 class="text-3xl md:text-4xl font-bold mb-8">
-      {{ page?.title }}
-    </h1>
-
-    <div class="max-w-3xl">
-      <ContentRenderer
-        v-if="page"
-        :value="page"
-        class="max-w-none"
-      />
-    </div>
+  <UContainer class="pt-8 md:pt-12">
+    <div class="uc-privacy-policy" />
   </UContainer>
 </template>
+
+<style lang="css">
+  .privacy-wrapper {
+    padding: 0 !important;
+
+    .privacy-footer {
+      display: none;
+    }
+  }
+</style>
