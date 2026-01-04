@@ -7,25 +7,17 @@ useSeoMeta({
   ogUrl: 'https://fit-kitchen.at/ernaehrungswissen/meal-prep-anfaenger'
 })
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  'headline': 'Meal Prep für Anfänger - Der komplette Guide zum Vorkochen',
-  'description': 'Lerne Meal Prep von Grund auf: Planung, Einkauf, Zubereitung und Lagerung.',
-  'author': {
-    '@type': 'Person',
-    'name': 'Samuel Reichör'
-  },
-  'publisher': {
-    '@type': 'Organization',
-    'name': 'Fit Kitchen',
-    'url': 'https://fit-kitchen.at'
-  }
-}
-
-useHead({
-  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(jsonLd) }]
-})
+// Schema.org
+useSchemaOrg([
+  defineArticle({
+    headline: 'Meal Prep für Anfänger - Der komplette Guide zum Vorkochen',
+    description: 'Lerne Meal Prep von Grund auf: Planung, Einkauf, Zubereitung und Lagerung.',
+    author: {
+      name: 'Samuel Reichör',
+      url: 'https://fit-kitchen.at/ueber-uns'
+    }
+  })
+])
 
 // Fetch meal prep recipes
 const { data: mealPrepRecipes } = await useAsyncData('mealprep-recipes', () =>

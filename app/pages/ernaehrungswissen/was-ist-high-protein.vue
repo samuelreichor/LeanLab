@@ -7,25 +7,17 @@ useSeoMeta({
   ogUrl: 'https://fit-kitchen.at/ernaehrungswissen/was-ist-high-protein'
 })
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  'headline': 'Was ist High Protein? Der komplette Guide zur proteinreichen Ernährung',
-  'description': 'Erfahre alles über High Protein Ernährung: Wie viel Protein brauchst du? Welche Lebensmittel sind proteinreich?',
-  'author': {
-    '@type': 'Person',
-    'name': 'Samuel Reichör'
-  },
-  'publisher': {
-    '@type': 'Organization',
-    'name': 'Fit Kitchen',
-    'url': 'https://fit-kitchen.at'
-  }
-}
-
-useHead({
-  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(jsonLd) }]
-})
+// Schema.org
+useSchemaOrg([
+  defineArticle({
+    headline: 'Was ist High Protein? Der komplette Guide zur proteinreichen Ernährung',
+    description: 'Erfahre alles über High Protein Ernährung: Wie viel Protein brauchst du? Welche Lebensmittel sind proteinreich?',
+    author: {
+      name: 'Samuel Reichör',
+      url: 'https://fit-kitchen.at/ueber-uns'
+    }
+  })
+])
 
 // Fetch high protein recipes (muskel-aufbau category)
 const { data: highProteinRecipes } = await useAsyncData('high-protein-recipes', () =>

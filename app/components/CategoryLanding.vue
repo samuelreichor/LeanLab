@@ -75,43 +75,14 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-// JSON-LD Structured Data
-const jsonLd = computed(() => {
-  const recipeItems = filteredRecipes.value.map((recipe, index) => ({
-    '@type': 'ListItem',
-    'position': index + 1,
-    'item': {
-      '@type': 'Recipe',
-      'name': recipe.title,
-      'description': recipe.description,
-      'image': `https://fit-kitchen.at${recipe.image}`,
-      'url': `https://fit-kitchen.at${recipe.path}`
-    }
-  }))
-
-  return {
-    '@context': 'https://schema.org',
+// Schema.org
+useSchemaOrg([
+  defineWebPage({
     '@type': 'CollectionPage',
     'name': props.title,
-    'description': props.description,
-    'url': props.seo.ogUrl,
-    'mainEntity': {
-      '@type': 'ItemList',
-      'name': props.title,
-      'numberOfItems': recipeItems.length,
-      'itemListElement': recipeItems
-    }
-  }
-})
-
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: computed(() => JSON.stringify(jsonLd.value))
-    }
-  ]
-})
+    'description': props.description
+  })
+])
 </script>
 
 <template>

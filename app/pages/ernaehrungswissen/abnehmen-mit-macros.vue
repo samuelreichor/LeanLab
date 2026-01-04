@@ -7,25 +7,17 @@ useSeoMeta({
   ogUrl: 'https://fit-kitchen.at/ernaehrungswissen/abnehmen-mit-macros'
 })
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  'headline': 'Abnehmen mit Makros - Der effektive Weg zur Gewichtsabnahme',
-  'description': 'Lerne, wie du mit Makro-Tracking erfolgreich abnimmst.',
-  'author': {
-    '@type': 'Person',
-    'name': 'Samuel Reichör'
-  },
-  'publisher': {
-    '@type': 'Organization',
-    'name': 'Fit Kitchen',
-    'url': 'https://fit-kitchen.at'
-  }
-}
-
-useHead({
-  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(jsonLd) }]
-})
+// Schema.org
+useSchemaOrg([
+  defineArticle({
+    headline: 'Abnehmen mit Makros - Der effektive Weg zur Gewichtsabnahme',
+    description: 'Lerne, wie du mit Makro-Tracking erfolgreich abnimmst.',
+    author: {
+      name: 'Samuel Reichör',
+      url: 'https://fit-kitchen.at/ueber-uns'
+    }
+  })
+])
 
 // Fetch weight loss recipes
 const { data: abnehmenRecipes } = await useAsyncData('abnehmen-recipes', () =>

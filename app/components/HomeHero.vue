@@ -27,7 +27,7 @@ const stats = computed(() => {
     props.recipes.reduce((sum, r) => sum + (r.prepTime ?? 0), 0) / recipeCount
   )
 
-  const quickRecipes = props.recipes.filter(r => (r.prepTime ?? 0) < 20).length
+  const quickRecipes = props.recipes.filter(r => (r.prepTime ?? 0) < 30).length
 
   return [
     { value: `${recipeCount}`, label: 'Rezepte', fullLabel: `${recipeCount} High-Protein Rezepte`, icon: 'i-lucide-book-open', span: 2 },

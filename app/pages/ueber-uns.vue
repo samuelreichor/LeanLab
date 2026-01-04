@@ -10,49 +10,14 @@ useSeoMeta({
   twitterCard: 'summary_large_image'
 })
 
-// JSON-LD Structured Data for Organization & Authors
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': 'https://fit-kitchen.at/#organization',
-      'name': 'Fit Kitchen',
-      'url': 'https://fit-kitchen.at',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': 'https://fit-kitchen.at/logo.png'
-      },
-      'description': 'Fit Kitchen ist deine Plattform für einfache High-Protein Rezepte. Optimiert für Muskelaufbau, Abnehmen und Meal Prep.',
-      'foundingDate': '2024',
-      'sameAs': [
-        'https://instagram.com/fit.kitchen.at'
-      ]
-    },
-    {
-      '@type': 'WebPage',
-      '@id': 'https://fit-kitchen.at/ueber-uns',
-      'url': 'https://fit-kitchen.at/ueber-uns',
-      'name': 'Über uns - Das Team hinter Fit Kitchen',
-      'isPartOf': {
-        '@id': 'https://fit-kitchen.at/#website'
-      },
-      'about': {
-        '@id': 'https://fit-kitchen.at/#organization'
-      },
-      'description': 'Lerne das Team hinter Fit Kitchen kennen.'
-    }
-  ]
-}
-
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLd)
-    }
-  ]
-})
+// Schema.org
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'AboutPage',
+    'name': 'Über uns - Das Team hinter Fit Kitchen',
+    'description': 'Lerne das Team hinter Fit Kitchen kennen.'
+  })
+])
 
 const values = [
   {

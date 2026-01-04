@@ -7,6 +7,15 @@ useSeoMeta({
   ogUrl: 'https://fit-kitchen.at/ernaehrungswissen'
 })
 
+// Schema.org
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'CollectionPage',
+    'name': 'Ernährungswissen',
+    'description': 'Lerne alles über High Protein Ernährung, Makros berechnen, Abnehmen und Meal Prep.'
+  })
+])
+
 const articles = [
   {
     title: 'Was ist High Protein?',

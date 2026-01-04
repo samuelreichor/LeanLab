@@ -67,6 +67,26 @@ defineOgImageComponent('Recipe', {
   protein: recipe.value.macros?.protein,
   kcal: recipe.value.macros?.kcal
 })
+
+// Schema.org Recipe
+useSchemaOrg([
+  defineRecipe({
+    name: recipe.value.title,
+    description: recipe.value.description,
+    image: recipe.value.image,
+    prepTime: `PT${recipe.value.prepTime}M`,
+    recipeYield: `${recipe.value.servings} Portionen`,
+    recipeIngredient: recipe.value.ingredients?.map(i => `${i.amount} ${i.unit} ${i.name}`),
+    recipeCategory: 'Main course',
+    nutrition: {
+      '@type': 'NutritionInformation',
+      'calories': `${recipe.value.macros?.kcal} kcal`,
+      'proteinContent': `${recipe.value.macros?.protein} g`,
+      'carbohydrateContent': `${recipe.value.macros?.carbs} g`,
+      'fatContent': `${recipe.value.macros?.fat} g`
+    }
+  })
+])
 </script>
 
 <template>

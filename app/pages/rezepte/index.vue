@@ -220,6 +220,15 @@ useSeoMeta({
   title: 'Rezepte',
   description: 'Einfache High-Protein Rezepte für deine Fitnessziele'
 })
+
+// Schema.org
+useSchemaOrg([
+  defineWebPage({
+    '@type': 'CollectionPage',
+    'name': 'Rezepte',
+    'description': 'Einfache High-Protein Rezepte für deine Fitnessziele'
+  })
+])
 </script>
 
 <template>

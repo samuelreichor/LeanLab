@@ -24,60 +24,18 @@ useSeoMeta({
   twitterDescription: 'Einfache Fitness-Rezepte mit berechneten Makros.'
 })
 
-// JSON-LD Structured Data
-const jsonLd = computed(() => {
-  const recipeItems = featuredRecipes.value.map((recipe, index) => ({
-    '@type': 'ListItem',
-    'position': index + 1,
-    'item': {
-      '@type': 'Recipe',
-      'name': recipe.title,
-      'description': recipe.description,
-      'image': `https://fit-kitchen.at${recipe.image}`,
-      'url': `https://fit-kitchen.at${recipe.path}`
-    }
-  }))
-
-  return {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': 'https://fit-kitchen.at/#website',
-        'name': 'Fit Kitchen',
-        'url': 'https://fit-kitchen.at',
-        'description': 'High-Protein Rezepte für Fitness & Muskelaufbau',
-        'inLanguage': 'de-DE'
-      },
-      {
-        '@type': 'Organization',
-        '@id': 'https://fit-kitchen.at/#organization',
-        'name': 'Fit Kitchen',
-        'url': 'https://fit-kitchen.at',
-        'logo': {
-          '@type': 'ImageObject',
-          'url': 'https://fit-kitchen.at/logo.png'
-        }
-      },
-      {
-        '@type': 'ItemList',
-        'name': 'Featured Rezepte',
-        'description': 'Die proteinreichsten Rezepte bei Fit Kitchen',
-        'numberOfItems': recipeItems.length,
-        'itemListElement': recipeItems
-      }
-    ]
-  }
-})
-
-useHead({
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: computed(() => JSON.stringify(jsonLd.value))
-    }
-  ]
-})
+// Schema.org Structured Data
+useSchemaOrg([
+  defineWebSite({
+    name: 'Fit Kitchen',
+    description: 'High-Protein Rezepte für Fitness & Muskelaufbau',
+    inLanguage: 'de-DE'
+  }),
+  defineWebPage({
+    name: 'High-Protein Rezepte für Fitness & Muskelaufbau',
+    description: 'Entdecke einfache High-Protein Rezepte für Muskelaufbau, Abnehmen und Meal Prep.'
+  })
+])
 </script>
 
 <template>

@@ -5,7 +5,7 @@ defineProps<{
   image: string
   category: string[]
   prepTime: number
-  difficulty: 'einfach' | 'mittel' | 'schwierig'
+  difficulty: 'leicht' | 'mittel' | 'schwierig'
 }>()
 
 const categoryLabels: Record<string, string> = {

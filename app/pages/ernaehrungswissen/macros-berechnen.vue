@@ -7,25 +7,17 @@ useSeoMeta({
   ogUrl: 'https://fit-kitchen.at/ernaehrungswissen/macros-berechnen'
 })
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  'headline': 'Makros berechnen - So ermittelst du deine optimalen Makronährstoffe',
-  'description': 'Lerne, wie du deine Makros für Muskelaufbau oder Abnehmen berechnest.',
-  'author': {
-    '@type': 'Person',
-    'name': 'Samuel Reichör'
-  },
-  'publisher': {
-    '@type': 'Organization',
-    'name': 'Fit Kitchen',
-    'url': 'https://fit-kitchen.at'
-  }
-}
-
-useHead({
-  script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(jsonLd) }]
-})
+// Schema.org
+useSchemaOrg([
+  defineArticle({
+    headline: 'Makros berechnen - So ermittelst du deine optimalen Makronährstoffe',
+    description: 'Lerne, wie du deine Makros für Muskelaufbau oder Abnehmen berechnest.',
+    author: {
+      name: 'Samuel Reichör',
+      url: 'https://fit-kitchen.at/ueber-uns'
+    }
+  })
+])
 
 // Fetch sample recipes with macros
 const { data: sampleRecipes } = await useAsyncData('macros-sample-recipes', () =>
