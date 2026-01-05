@@ -65,6 +65,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     mailchimpApiKey: process.env.MAILCHIMP_API_KEY,
     mailchimpAudienceId: process.env.MAILCHIMP_AUDIENCE_ID
   },
+  routeRules: {
+    '/**': { swr: true }
+  },
+
+  sourcemap: {
+    client: 'hidden'
+  },
 
   compatibilityDate: '2025-01-15',
 
@@ -99,9 +106,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     org: 'fit-kitchen',
     project: 'javascript-nuxt',
     autoInjectServerSentry: 'top-level-import'
-  },
-
-  sourcemap: {
-    client: 'hidden'
   }
 })
