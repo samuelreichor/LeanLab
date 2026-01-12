@@ -1,15 +1,12 @@
 <script setup lang="ts">
 // Fetch featured recipes (sorted by protein, top 6)
+// Using order and limit to reduce data transfer
 const { data: recipes } = await useAsyncData('featured-recipes', () =>
-  queryCollection('recipes').all()
+  queryCollection('recipes')
+    .order('macros.protein', 'DESC')
+    .limit(6)
+    .all()
 )
-
-const featuredRecipes = computed(() => {
-  if (!recipes.value) return []
-  return [...recipes.value]
-    .sort((a, b) => (b.macros?.protein ?? 0) - (a.macros?.protein ?? 0))
-    .slice(0, 6)
-})
 
 // SEO Meta Tags
 useSeoMeta({
@@ -41,10 +38,10 @@ useSchemaOrg([
 <template>
   <div>
     <HomeHero :recipes="recipes ?? []" />
-    <HomeFeatured :recipes="featuredRecipes" />
-    <HomeCategories />
-    <NewsletterSection />
-    <HomeBenefits />
-    <HomeFaq />
+    <HomeFeatured :recipes="recipes ?? []" />
+    <LazyHomeCategories />
+    <LazyNewsletterSection />
+    <LazyHomeBenefits />
+    <LazyHomeFaq />
   </div>
 </template>
