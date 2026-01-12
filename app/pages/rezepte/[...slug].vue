@@ -10,7 +10,7 @@ const slug = computed(() => {
   return slugParam || ''
 })
 
-const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
+const { data: recipe, status } = await useAsyncData(`recipe-${slug.value}`, () =>
   queryCollection('recipes').path(`/rezepte/${slug.value}`).first()
 )
 
@@ -21,7 +21,8 @@ const { data: allRecipes } = useLazyAsyncData('all-recipes', () =>
     .all()
 )
 
-if (!recipe.value) {
+// Only throw 404 after data fetch completed (not during hydration)
+if (status.value === 'success' && !recipe.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Rezept nicht gefunden'
