@@ -2,8 +2,19 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/seo', '@nuxt/content', '@sentry/nuxt/module', '@nuxt/scripts'],
 
+  $production: {
+    devtools: {
+      enabled: false
+    },
+    sentry: {
+      org: 'fit-kitchen',
+      project: 'fit-kitchen',
+      autoInjectServerSentry: 'top-level-import'
+    }
+  },
+
   devtools: {
-    enabled: false
+    enabled: true
   },
 
   app: {
@@ -25,14 +36,6 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicons/apple-touch-icon.png' },
         { rel: 'manifest', href: '/favicons/site.webmanifest' }
       ]
-    }
-  },
-
-  scripts: {
-    registry: {
-      googleTagManager: {
-        id: 'GTM-NTZ8T3WH'
-      }
     }
   },
 
@@ -64,15 +67,21 @@ export default defineNuxtConfig({
     mailchimpApiKey: process.env.MAILCHIMP_API_KEY,
     mailchimpAudienceId: process.env.MAILCHIMP_AUDIENCE_ID
   },
-  routeRules: {
-    '/**': { swr: true }
-  },
 
   sourcemap: {
     client: 'hidden'
   },
 
   compatibilityDate: '2025-01-15',
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/'
+      ]
+    }
+  },
 
   eslint: {
     config: {
@@ -84,12 +93,7 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    fonts: [
-      // will load the Noto Sans font from Google fonts
-      'Public+Sans:400',
-      'Public+Sans:600',
-      'Public+Sans:700'
-    ]
+    zeroRuntime: true
   },
 
   schemaOrg: {
@@ -101,9 +105,11 @@ export default defineNuxtConfig({
     }
   },
 
-  sentry: {
-    org: 'fit-kitchen',
-    project: 'javascript-nuxt',
-    autoInjectServerSentry: 'top-level-import'
+  scripts: {
+    registry: {
+      googleTagManager: {
+        id: 'GTM-NTZ8T3WH'
+      }
+    }
   }
 })
