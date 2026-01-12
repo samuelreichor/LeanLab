@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const route = useRoute()
-useWakeLock({ autoActivate: true })
+
+// Only activate WakeLock on client to avoid hydration issues
+onMounted(() => {
+  useWakeLock({ autoActivate: true })
+})
 
 const slug = computed(() => {
   const slugParam = route.params.slug
@@ -124,11 +128,25 @@ if (recipe.value) {
         id="ingredients"
         class="lg:col-span-1 space-y-4 lg:sticky lg:top-4 lg:self-start"
       >
-        <RecipeIngredients
-          v-model:servings="servings"
-          :ingredients="recipe.ingredients"
-          :base-servings="recipe.servings ?? 4"
-        />
+        <ClientOnly>
+          <RecipeIngredients
+            v-model:servings="servings"
+            :ingredients="recipe.ingredients"
+            :base-servings="recipe.servings ?? 4"
+          />
+          <template #fallback>
+            <div class="bg-neutral-100 rounded-xl p-4 animate-pulse">
+              <div class="h-6 bg-neutral-200 rounded w-24 mb-4" />
+              <div class="space-y-2">
+                <div
+                  v-for="i in 6"
+                  :key="i"
+                  class="h-4 bg-neutral-200 rounded"
+                />
+              </div>
+            </div>
+          </template>
+        </ClientOnly>
 
         <RecipeAuthor class="mt-4 print:hidden" />
       </div>
