@@ -62,7 +62,11 @@ export default defineNuxtConfig({
     // Keep API routes as serverless
     '/api/**': { prerender: false },
     // OG images generated on-demand
-    '/__og-image__/**': { prerender: false }
+    '/__og-image__/**': { prerender: false },
+    // Netlify image CDN
+    '/.netlify/**': { prerender: false },
+    // Nuxt Image optimization endpoint
+    '/_ipx/**': { prerender: false }
   },
 
   sourcemap: {
@@ -74,7 +78,12 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/']
+      routes: ['/'],
+      ignore: [
+        '/.netlify',
+        '/_ipx',
+        '/__og-image__'
+      ]
     }
   },
 
