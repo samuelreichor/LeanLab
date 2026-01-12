@@ -29,8 +29,12 @@ const { data: allRecipes } = useLazyAsyncData('all-recipes', () =>
     .all()
 )
 
-// Use useState to sync servings between server and client hydration
-const servings = useState(`servings-${slug.value}`, () => recipe.value?.servings ?? 4)
+// Track user-modified servings separately to avoid hydration mismatch
+const userServings = ref<number | null>(null)
+const servings = computed({
+  get: () => userServings.value ?? recipe.value?.servings ?? 4,
+  set: (val: number) => { userServings.value = val }
+})
 
 // Find similar recipes based on shared categories
 const similarRecipes = computed(() => {
