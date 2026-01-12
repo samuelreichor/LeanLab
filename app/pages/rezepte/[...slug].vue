@@ -6,16 +6,12 @@ onMounted(() => {
   useWakeLock({ autoActivate: true })
 })
 
-const slug = computed(() => {
-  const slugParam = route.params.slug
-  if (Array.isArray(slugParam)) {
-    return slugParam.join('/')
-  }
-  return slugParam || ''
-})
+// Get slug directly from route params (not computed) for stable hydration
+const slugParam = route.params.slug
+const slug = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam || '')
 
-const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
-  queryCollection('recipes').path(`/rezepte/${slug.value}`).first()
+const { data: recipe } = await useAsyncData(`recipe-${slug}`, () =>
+  queryCollection('recipes').path(`/rezepte/${slug}`).first()
 )
 
 // Throw 404 if recipe not found (only on server to avoid hydration issues)
@@ -128,25 +124,11 @@ if (recipe.value) {
         id="ingredients"
         class="lg:col-span-1 space-y-4 lg:sticky lg:top-4 lg:self-start"
       >
-        <ClientOnly>
-          <RecipeIngredients
-            v-model:servings="servings"
-            :ingredients="recipe.ingredients"
-            :base-servings="recipe.servings ?? 4"
-          />
-          <template #fallback>
-            <div class="bg-neutral-100 rounded-xl p-4 animate-pulse">
-              <div class="h-6 bg-neutral-200 rounded w-24 mb-4" />
-              <div class="space-y-2">
-                <div
-                  v-for="i in 6"
-                  :key="i"
-                  class="h-4 bg-neutral-200 rounded"
-                />
-              </div>
-            </div>
-          </template>
-        </ClientOnly>
+        <RecipeIngredients
+          v-model:servings="servings"
+          :ingredients="recipe.ingredients"
+          :base-servings="recipe.servings ?? 4"
+        />
 
         <RecipeAuthor class="mt-4 print:hidden" />
       </div>
