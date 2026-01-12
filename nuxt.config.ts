@@ -83,6 +83,10 @@ export default defineNuxtConfig({
     }
   },
 
+  image: {
+    provider: 'ipx'
+  },
+
   eslint: {
     config: {
       stylistic: {
