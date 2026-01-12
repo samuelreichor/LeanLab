@@ -14,9 +14,11 @@ const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
   queryCollection('recipes').path(`/rezepte/${slug.value}`).first()
 )
 
-// Fetch all recipes for similar recipes section
-const { data: allRecipes } = await useAsyncData('all-recipes', () =>
-  queryCollection('recipes').all()
+// Fetch all recipes for similar recipes section (lazy to not block initial render)
+const { data: allRecipes } = useLazyAsyncData('all-recipes', () =>
+  queryCollection('recipes')
+    .select('path', 'title', 'description', 'image', 'category', 'prepTime', 'macros')
+    .all()
 )
 
 if (!recipe.value) {
