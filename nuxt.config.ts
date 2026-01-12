@@ -2,6 +2,13 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/seo', '@nuxt/content', '@sentry/nuxt/module', '@nuxt/scripts'],
 
+  // Enable hydration mismatch details in production for debugging
+  vite: {
+    define: {
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: true
+    }
+  },
+
   $production: {
     devtools: {
       enabled: false
