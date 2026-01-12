@@ -7,8 +7,10 @@ onMounted(() => {
 })
 
 // Get slug directly from route params (not computed) for stable hydration
+// Remove trailing slash to match payload key
 const slugParam = route.params.slug
-const slug = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam || '')
+const slugRaw = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam || '')
+const slug = slugRaw.replace(/\/$/, '') // Remove trailing slash
 
 const nuxtApp = useNuxtApp()
 const cacheKey = `recipe-${slug}`
