@@ -60,7 +60,9 @@ export default defineNuxtConfig({
     // Prerender all static pages
     '/**': { prerender: true },
     // Keep API routes as serverless
-    '/api/**': { prerender: false }
+    '/api/**': { prerender: false },
+    // OG images generated on-demand
+    '/__og-image__/**': { prerender: false }
   },
 
   sourcemap: {
