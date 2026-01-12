@@ -28,14 +28,6 @@ export default defineNuxtConfig({
     }
   },
 
-  scripts: {
-    registry: {
-      googleTagManager: {
-        id: 'GTM-NTZ8T3WH'
-      }
-    }
-  },
-
   css: ['~/assets/css/main.css'],
 
   site: {
@@ -71,18 +63,18 @@ export default defineNuxtConfig({
     '/api/**': { prerender: false }
   },
 
+  sourcemap: {
+    client: 'hidden'
+  },
+
+  compatibilityDate: '2025-01-15',
+
   nitro: {
     prerender: {
       crawlLinks: true,
       routes: ['/']
     }
   },
-
-  sourcemap: {
-    client: 'hidden'
-  },
-
-  compatibilityDate: '2025-01-15',
 
   eslint: {
     config: {
@@ -108,6 +100,14 @@ export default defineNuxtConfig({
       name: 'Fit Kitchen',
       url: 'https://fit-kitchen.at',
       logo: 'https://fit-kitchen.at/logo.png'
+    }
+  },
+
+  scripts: {
+    registry: {
+      googleTagManager: {
+        id: 'GTM-NTZ8T3WH'
+      }
     }
   },
 
