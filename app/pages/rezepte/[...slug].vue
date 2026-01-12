@@ -10,9 +10,17 @@ const slug = computed(() => {
   return slugParam || ''
 })
 
-const { data: recipe, status } = await useAsyncData(`recipe-${slug.value}`, () =>
+const { data: recipe } = await useAsyncData(`recipe-${slug.value}`, () =>
   queryCollection('recipes').path(`/rezepte/${slug.value}`).first()
 )
+
+// Throw 404 if recipe not found (only on server to avoid hydration issues)
+if (import.meta.server && !recipe.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Rezept nicht gefunden'
+  })
+}
 
 // Fetch all recipes for similar recipes section (lazy to not block initial render)
 const { data: allRecipes } = useLazyAsyncData('all-recipes', () =>
@@ -21,15 +29,7 @@ const { data: allRecipes } = useLazyAsyncData('all-recipes', () =>
     .all()
 )
 
-// Only throw 404 after data fetch completed (not during hydration)
-if (status.value === 'success' && !recipe.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Rezept nicht gefunden'
-  })
-}
-
-const servings = ref(recipe.value.servings ?? 4)
+const servings = ref(recipe.value?.servings ?? 4)
 
 // Find similar recipes based on shared categories
 const similarRecipes = computed(() => {
@@ -58,38 +58,41 @@ function scrollToIngredients() {
   document.getElementById('ingredients')?.scrollIntoView({ behavior: 'smooth' })
 }
 
+// SEO Meta - use computed values for reactivity
 useSeoMeta({
-  title: recipe.value.title,
-  description: recipe.value.description,
-  ogImage: recipe.value.image
+  title: () => recipe.value?.title,
+  description: () => recipe.value?.description,
+  ogImage: () => recipe.value?.image
 })
 
-defineOgImageComponent('Recipe', {
-  title: recipe.value.title,
-  prepTime: recipe.value.prepTime,
-  protein: recipe.value.macros?.protein,
-  kcal: recipe.value.macros?.kcal
-})
-
-// Schema.org Recipe
-useSchemaOrg([
-  defineRecipe({
-    name: recipe.value.title,
-    description: recipe.value.description,
-    image: recipe.value.image,
-    prepTime: `PT${recipe.value.prepTime}M`,
-    recipeYield: `${recipe.value.servings} Portionen`,
-    recipeIngredient: recipe.value.ingredients?.map(i => `${i.amount} ${i.unit} ${i.name}`),
-    recipeCategory: 'Main course',
-    nutrition: {
-      '@type': 'NutritionInformation',
-      'calories': `${recipe.value.macros?.kcal} kcal`,
-      'proteinContent': `${recipe.value.macros?.protein} g`,
-      'carbohydrateContent': `${recipe.value.macros?.carbs} g`,
-      'fatContent': `${recipe.value.macros?.fat} g`
-    }
+if (recipe.value) {
+  defineOgImageComponent('Recipe', {
+    title: recipe.value.title,
+    prepTime: recipe.value.prepTime,
+    protein: recipe.value.macros?.protein,
+    kcal: recipe.value.macros?.kcal
   })
-])
+
+  // Schema.org Recipe
+  useSchemaOrg([
+    defineRecipe({
+      name: recipe.value.title,
+      description: recipe.value.description,
+      image: recipe.value.image,
+      prepTime: `PT${recipe.value.prepTime}M`,
+      recipeYield: `${recipe.value.servings} Portionen`,
+      recipeIngredient: recipe.value.ingredients?.map(i => `${i.amount} ${i.unit} ${i.name}`),
+      recipeCategory: 'Main course',
+      nutrition: {
+        '@type': 'NutritionInformation',
+        'calories': `${recipe.value.macros?.kcal} kcal`,
+        'proteinContent': `${recipe.value.macros?.protein} g`,
+        'carbohydrateContent': `${recipe.value.macros?.carbs} g`,
+        'fatContent': `${recipe.value.macros?.fat} g`
+      }
+    })
+  ])
+}
 </script>
 
 <template>
