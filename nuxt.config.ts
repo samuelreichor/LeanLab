@@ -65,7 +65,17 @@ export default defineNuxtConfig({
     mailchimpAudienceId: process.env.MAILCHIMP_AUDIENCE_ID
   },
   routeRules: {
-    '/**': { swr: true }
+    // Prerender all static pages
+    '/**': { prerender: true },
+    // Keep API routes as serverless
+    '/api/**': { prerender: false }
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    }
   },
 
   sourcemap: {
