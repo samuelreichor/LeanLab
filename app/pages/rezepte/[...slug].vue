@@ -10,12 +10,22 @@ onMounted(() => {
 const slugParam = route.params.slug
 const slug = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam || '')
 
+const nuxtApp = useNuxtApp()
+const cacheKey = `recipe-${slug}`
+
+// Debug: Log what's in the payload
+if (import.meta.client) {
+  console.log('Cache key:', cacheKey)
+  console.log('Payload data keys:', Object.keys(nuxtApp.payload.data || {}))
+  console.log('Static data keys:', Object.keys(nuxtApp.static?.data || {}))
+}
+
 const { data: recipe } = await useAsyncData(
-  `recipe-${slug}`,
+  cacheKey,
   () => queryCollection('recipes').path(`/rezepte/${slug}`).first(),
   {
     // Explicitly get cached data from payload during hydration
-    getCachedData: key => useNuxtApp().payload.data[key] ?? useNuxtApp().static.data[key]
+    getCachedData: key => nuxtApp.payload.data[key] ?? nuxtApp.static?.data?.[key]
   }
 )
 
