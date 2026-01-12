@@ -12,23 +12,9 @@ const slugParam = route.params.slug
 const slugRaw = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam || '')
 const slug = slugRaw.replace(/\/$/, '') // Remove trailing slash
 
-const nuxtApp = useNuxtApp()
-const cacheKey = `recipe-${slug}`
-
-// Debug: Log what's in the payload
-if (import.meta.client) {
-  console.log('Cache key:', cacheKey)
-  console.log('Payload data keys:', Object.keys(nuxtApp.payload.data || {}))
-  console.log('Static data keys:', Object.keys(nuxtApp.static?.data || {}))
-}
-
 const { data: recipe } = await useAsyncData(
-  cacheKey,
-  () => queryCollection('recipes').path(`/rezepte/${slug}`).first(),
-  {
-    // Explicitly get cached data from payload during hydration
-    getCachedData: key => nuxtApp.payload.data[key] ?? nuxtApp.static?.data?.[key]
-  }
+  `recipe-${slug}`,
+  () => queryCollection('recipes').path(`/rezepte/${slug}`).first()
 )
 
 // Throw 404 if recipe not found (only on server to avoid hydration issues)
@@ -40,14 +26,10 @@ if (import.meta.server && !recipe.value) {
 }
 
 // Fetch all recipes for similar recipes section (lazy to not block initial render)
-const { data: allRecipes } = useLazyAsyncData(
-  'all-recipes',
-  () => queryCollection('recipes')
+const { data: allRecipes } = useLazyAsyncData('all-recipes', () =>
+  queryCollection('recipes')
     .select('path', 'title', 'description', 'image', 'category', 'prepTime', 'macros')
-    .all(),
-  {
-    getCachedData: key => useNuxtApp().payload.data[key] ?? useNuxtApp().static.data[key]
-  }
+    .all()
 )
 
 // Track user-modified servings separately to avoid hydration mismatch
