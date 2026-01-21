@@ -109,6 +109,15 @@ export default defineNuxtConfig({
     }
   },
 
+  fonts: {
+    defaults: {
+      preload: true
+    },
+    providers: {
+      google: false
+    }
+  },
+
   image: {
     provider: 'ipx'
   },
