@@ -43,9 +43,10 @@ defineProps<{
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <RecipeCard
-          v-for="recipe in recipes"
+          v-for="(recipe, index) in recipes"
           :key="recipe.path"
           :recipe="recipe"
+          :priority="index === 0"
         />
       </div>
 
