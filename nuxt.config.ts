@@ -30,8 +30,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://fit-kitchen.at' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'dns-prefetch', href: 'https://o4510657224769536.ingest.de.sentry.io' },
         { rel: 'icon', type: 'image/png', href: '/favicons/favicon-96x96.png', sizes: '96x96' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicons/favicon.svg' },
