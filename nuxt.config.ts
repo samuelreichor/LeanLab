@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/seo', '@nuxt/content', '@sentry/nuxt/module', '@nuxt/scripts'],
+  modules: ['@nuxt/eslint', '@nuxt/image', '@nuxt/ui', '@nuxtjs/seo', '@nuxt/content', '@sentry/nuxt/module'],
 
   $production: {
     devtools: {
@@ -106,14 +106,6 @@ export default defineNuxtConfig({
       name: 'Fit Kitchen',
       url: 'https://fit-kitchen.at',
       logo: 'https://fit-kitchen.at/logo.png'
-    }
-  },
-
-  scripts: {
-    registry: {
-      googleTagManager: {
-        id: 'GTM-NTZ8T3WH'
-      }
     }
   }
 })
