@@ -12,8 +12,9 @@ interface Recipe {
   }
 }
 
-defineProps<{
+const props = defineProps<{
   recipe: Recipe
+  priority?: boolean
 }>()
 
 const categoryLabels: Record<string, string> = {
@@ -41,7 +42,8 @@ function formatPrepTime(minutes: number): string {
         <NuxtImg
           :src="recipe.image"
           :alt="recipe.title"
-          loading="lazy"
+          :loading="props.priority ? 'eager' : 'lazy'"
+          :fetchpriority="props.priority ? 'high' : undefined"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
