@@ -42,6 +42,7 @@ function formatPrepTime(minutes: number): string {
           :src="recipe.image"
           :alt="recipe.title"
           loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div class="absolute top-3 left-3 flex flex-wrap gap-1">

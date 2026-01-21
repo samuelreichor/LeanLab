@@ -1,7 +1,9 @@
 <script setup lang="ts">
-// Fetch all recipes and sort client-side for featured section
+// Fetch all recipes with only needed fields for stats and featured section
 const { data: recipes } = await useAsyncData('featured-recipes', () =>
-  queryCollection('recipes').all()
+  queryCollection('recipes')
+    .select('path', 'title', 'description', 'image', 'category', 'prepTime', 'macros')
+    .all()
 )
 
 const featuredRecipes = computed(() => {

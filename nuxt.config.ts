@@ -30,6 +30,8 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://fit-kitchen.at' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'icon', type: 'image/png', href: '/favicons/favicon-96x96.png', sizes: '96x96' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicons/favicon.svg' },
         { rel: 'shortcut icon', href: '/favicons/favicon.ico' },
@@ -78,9 +80,21 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: [
-        '/'
+        '/',
+        '/rezepte'
       ]
+    },
+    compressPublicAssets: true
+  },
+
+  vite: {
+    build: {
+      cssCodeSplit: true
     }
+  },
+
+  experimental: {
+    viewTransition: true
   },
 
   eslint: {
