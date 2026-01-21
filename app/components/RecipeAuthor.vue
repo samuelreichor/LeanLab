@@ -3,6 +3,9 @@
     <NuxtImg
       src="authors/samuel-reichoer.webp"
       alt="Samuel Reichör"
+      width="48"
+      height="48"
+      loading="lazy"
       class="w-12 h-12 rounded-full object-cover shrink-0"
     />
     <div>
