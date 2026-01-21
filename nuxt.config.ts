@@ -96,7 +96,11 @@ export default defineNuxtConfig({
 
   vite: {
     build: {
-      cssCodeSplit: true
+      cssCodeSplit: true,
+      target: 'esnext',
+      modulePreload: {
+        polyfill: false
+      }
     }
   },
 
