@@ -75,12 +75,12 @@ export default defineNuxtConfig({
     client: 'hidden'
   },
 
-  experimental: {
-    viewTransition: true
-  },
-
   features: {
     inlineStyles: true
+  },
+
+  experimental: {
+    viewTransition: true
   },
 
   compatibilityDate: '2025-01-15',
