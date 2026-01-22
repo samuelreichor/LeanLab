@@ -42,9 +42,11 @@ function printRecipe() {
       <NuxtImg
         :src="image"
         :alt="title"
+        width="1200"
+        height="675"
         loading="eager"
         fetchpriority="high"
-        sizes="100vw md:100vw lg:1200px"
+        sizes="sm:100vw md:100vw lg:1200px"
         class="absolute inset-0 w-full h-full object-cover"
       />
       <!-- Print Button oben rechts -->
