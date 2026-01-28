@@ -78,11 +78,6 @@ export default defineNuxtConfig({
     colorMode: false
   },
 
-  runtimeConfig: {
-    mailchimpApiKey: process.env.MAILCHIMP_API_KEY,
-    mailchimpAudienceId: process.env.MAILCHIMP_AUDIENCE_ID
-  },
-
   sourcemap: {
     client: 'hidden'
   },
