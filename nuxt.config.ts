@@ -155,5 +155,9 @@ export default defineNuxtConfig({
       url: 'https://fit-kitchen.at',
       logo: 'https://fit-kitchen.at/logo.png'
     }
+  },
+  
+  sitemap: {
+    zeroRuntime: true
   }
 })
