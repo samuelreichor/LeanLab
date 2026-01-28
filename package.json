@@ -13,14 +13,14 @@
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.82",
-    "@nuxt/content": "^3.9.0",
+    "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.3.0",
-    "@nuxtjs/seo": "^3.3.0",
+    "@nuxtjs/seo": "^3.4.0",
     "@sentry/nuxt": "^10.32.1",
     "@tailwindcss/typography": "^0.5.19",
     "better-sqlite3": "^12.5.0",
-    "nuxt": "^4.2.2"
+    "nuxt": "^4.3.0"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.12.1",
