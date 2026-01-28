@@ -131,11 +131,11 @@ export default defineNuxtConfig({
     provider: 'ipx',
     screens: {
       xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536
+      sm: 480,
+      md: 640,
+      lg: 768,
+      xl: 1024,
+      xxl: 1280
     }
   },
 

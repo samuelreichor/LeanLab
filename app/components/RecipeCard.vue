@@ -42,11 +42,11 @@ function formatPrepTime(minutes: number): string {
         <NuxtImg
           :src="recipe.image"
           :alt="recipe.title"
-          width="480"
-          height="360"
+          width="400"
+          height="300"
           :loading="props.priority ? 'eager' : 'lazy'"
           :fetchpriority="props.priority ? 'high' : undefined"
-          sizes="sm:100vw md:50vw lg:33vw"
+          sizes="xs:100vw sm:50vw md:33vw lg:400px"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div class="absolute top-3 left-3 flex flex-wrap gap-1">
