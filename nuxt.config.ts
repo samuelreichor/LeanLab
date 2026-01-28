@@ -129,6 +129,7 @@ export default defineNuxtConfig({
 
   image: {
     provider: 'ipx',
+    densities: [1],
     screens: {
       xs: 320,
       sm: 480,
