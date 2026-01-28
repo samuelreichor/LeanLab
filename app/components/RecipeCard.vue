@@ -46,7 +46,7 @@ function formatPrepTime(minutes: number): string {
           height="300"
           :loading="props.priority ? 'eager' : 'lazy'"
           :fetchpriority="props.priority ? 'high' : undefined"
-          sizes="xs:100vw sm:50vw md:33vw lg:400px"
+          sizes="100vw sm:50vw md:400px"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div class="absolute top-3 left-3 flex flex-wrap gap-1">
