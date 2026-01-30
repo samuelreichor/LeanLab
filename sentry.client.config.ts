@@ -15,12 +15,12 @@ declare global {
 
 const sentryConfig = {
   dsn: 'https://ce1d6c42ccf4f1b934dc4937722fd573@o4510657224769536.ingest.de.sentry.io/4510657225949264',
-  tracesSampleRate: 1.0,
+  tracesSampleRate: 0.1,
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
   integrations: [Sentry.replayIntegration()],
-  enableLogs: true,
-  sendDefaultPii: true,
+  enableLogs: false,
+  sendDefaultPii: false,
   debug: false
 }
 

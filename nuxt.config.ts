@@ -83,7 +83,8 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    viewTransition: true
+    viewTransition: true,
+    payloadExtraction: true
   },
 
   compatibilityDate: '2025-01-15',
