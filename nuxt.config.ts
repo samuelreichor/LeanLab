@@ -31,6 +31,8 @@ export default defineNuxtConfig({
       link: [
         { rel: 'canonical', href: 'https://fit-kitchen.at' },
         { rel: 'preconnect', href: 'https://o4510657224769536.ingest.de.sentry.io' },
+        { rel: 'preconnect', href: 'https://consent.cookiebot.com', crossorigin: 'anonymous' },
+        { rel: 'dns-prefetch', href: 'https://consent.cookiebot.com' },
         { rel: 'icon', type: 'image/png', href: '/favicons/favicon-96x96.png', sizes: '96x96' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicons/favicon.svg' },
         { rel: 'shortcut icon', href: '/favicons/favicon.ico' },
@@ -38,12 +40,6 @@ export default defineNuxtConfig({
         { rel: 'manifest', href: '/favicons/site.webmanifest' }
       ],
       script: [
-        {
-          'id': 'Cookiebot',
-          'src': 'https://consent.cookiebot.com/uc.js',
-          'data-cbid': 'c4c17485-4e93-49fb-82ff-2ca8396c7964',
-          'type': 'text/javascript'
-        },
         {
           'id': 'gtm-script',
           'type': 'text/plain',
