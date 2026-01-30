@@ -133,7 +133,7 @@ if (recipe.value) {
           :base-servings="recipe.servings ?? 4"
         />
 
-        <RecipeAuthor class="mt-4 print:hidden" />
+        <LazyRecipeAuthor class="mt-4 print:hidden" />
       </div>
 
       <div class="lg:col-span-2 mt-8 md:mt-0">
@@ -154,7 +154,7 @@ if (recipe.value) {
           Ähnliche Rezepte
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          <RecipeCard
+          <LazyRecipeCard
             v-for="similarRecipe in similarRecipes"
             :key="similarRecipe.path"
             :recipe="similarRecipe"

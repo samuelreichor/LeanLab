@@ -105,7 +105,17 @@ export default defineNuxtConfig({
 
   vite: {
     build: {
-      cssCodeSplit: true
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            // Split Sentry into its own chunk (loaded async)
+            if (id.includes('@sentry')) {
+              return 'sentry'
+            }
+          }
+        }
+      }
     }
   },
 
