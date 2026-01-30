@@ -44,9 +44,10 @@ function formatPrepTime(minutes: number): string {
           :alt="recipe.title"
           width="400"
           height="300"
+          fit="cover"
           :loading="props.priority ? 'eager' : 'lazy'"
           :fetchpriority="props.priority ? 'high' : undefined"
-          sizes="100vw sm:50vw md:400px"
+          sizes="xs:320px sm:480px md:384px lg:320px xl:400px"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <div class="absolute top-3 left-3 flex flex-wrap gap-1">
