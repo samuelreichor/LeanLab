@@ -125,14 +125,15 @@ export default defineNuxtConfig({
 
   image: {
     provider: 'ipx',
+    quality: 80,
+    format: ['webp', 'jpg'],
     densities: [1],
     screens: {
       xs: 320,
-      sm: 480,
-      md: 640,
-      lg: 768,
-      xl: 1024,
-      xxl: 1280
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280
     }
   },
 
