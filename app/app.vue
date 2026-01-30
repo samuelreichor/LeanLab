@@ -48,6 +48,7 @@ const searchLinks = [
     <AppFooter />
 
     <ClientOnly>
+      <CookieBanner />
       <UContentSearch
         placeholder="Suche nach Rezepten..."
         :files="searchFiles"
