@@ -42,6 +42,14 @@ Google Analytics verwendet Cookies, die eine Analyse der Benutzung der Website e
 
 Wir haben die IP-Anonymisierung aktiviert, sodass Ihre IP-Adresse innerhalb der EU/EWR gekürzt wird. Die Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO.
 
+### 3.2 Einwilligungsverwaltung (Cookie-Banner)
+
+Zur Verwaltung Ihrer Einwilligungen setzen wir die Open-Source-Lösung c15t ein. Google Tag Manager wird zunächst ohne Einwilligung im Modus „Consent Mode v2“ geladen, bei dem alle Speicher- und Werbefunktionen deaktiviert sind. Erst nach Ihrer Einwilligung in die Kategorien „Statistik“ bzw. „Marketing“ werden Google Analytics, die Fehlerüberwachung (Sentry) und Marketing-Tags aktiviert.
+
+Ihre Auswahl wird ausschließlich lokal in Ihrem Browser (Cookie und Local Storage) gespeichert; es werden dabei keine Daten an Dritte übermittelt. Die Rechtsgrundlage für die Speicherung der Einwilligung ist Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 165 Abs. 3 TKG 2021.
+
+Sie können Ihre Einwilligung jederzeit über den Link „Cookie-Einstellungen“ im Footer der Website ändern oder widerrufen.
+
 ## 4. Ihre Rechte
 
 Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const consent = useConsent()
+
 const columns = [{
   label: 'Rezepte',
   children: [{
@@ -73,6 +75,17 @@ const columns = [{
       <p class="text-sm text-muted">
         Fit Kitchen © {{ new Date().getFullYear() }}
       </p>
+    </template>
+
+    <template #right>
+      <UButton
+        label="Cookie-Einstellungen"
+        color="neutral"
+        variant="link"
+        size="sm"
+        class="p-0"
+        @click="consent?.openDialog()"
+      />
     </template>
   </UFooter>
 </template>

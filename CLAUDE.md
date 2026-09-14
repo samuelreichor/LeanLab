@@ -40,3 +40,10 @@ Content is defined in `content/index.yml` and validated against Zod schemas in `
 Configured in `nuxt.config.ts` with stylistic rules:
 - `commaDangle: 'never'`
 - `braceStyle: '1tbs'`
+
+### Consent Management (c15t)
+
+Cookie consent is handled by the headless `c15t` runtime (https://c15t.com), not by Cookiebot.
+- `app/plugins/consent.client.ts` creates the runtime, registers Google Tag Manager (via `@c15t/scripts`, always loaded with Consent Mode v2 "denied" defaults) and initializes Sentry only after `measurement` consent.
+- `app/composables/useConsent.ts` exposes the reactive consent API; `app/components/CookieBanner.vue` renders banner + settings dialog with Nuxt UI; the footer has a "Cookie-Einstellungen" button that reopens the dialog.
+- `NUXT_PUBLIC_C15T_BACKEND_URL` (runtimeConfig `c15tBackendUrl`) switches from offline mode (browser-only storage) to hosted mode. `sentry.client.config.ts` only exports the Sentry config and must not call `Sentry.init`.
