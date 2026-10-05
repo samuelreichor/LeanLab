@@ -25,11 +25,9 @@ export default defineNuxtConfig({
       titleTemplate: '%s | Fit Kitchen',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'robots', content: 'index, follow' },
         { name: 'apple-mobile-web-app-title', content: 'Fit Kitchen' }
       ],
       link: [
-        { rel: 'canonical', href: 'https://fit-kitchen.at' },
         { rel: 'preconnect', href: 'https://o4510657224769536.ingest.de.sentry.io' },
         { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
         { rel: 'icon', type: 'image/png', href: '/favicons/favicon-96x96.png', sizes: '96x96' },
@@ -45,6 +43,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://fit-kitchen.at',
+    trailingSlash: false,
     name: 'Fit Kitchen',
     defaultLocale: 'de'
   },
@@ -93,6 +92,8 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
+      // rezepte.html statt rezepte/index.html, sonst leitet Cloudflare /rezepte per 308 auf /rezepte/ um
+      autoSubfolderIndex: false,
       crawlLinks: true,
       routes: [
         '/',

@@ -81,23 +81,38 @@ if (recipe.value) {
     kcal: recipe.value.macros?.kcal
   })
 
+  const macros = recipe.value.macros
+
   // Schema.org Recipe
   useSchemaOrg([
     defineRecipe({
       name: recipe.value.title,
       description: recipe.value.description,
       image: recipe.value.image,
-      prepTime: `PT${recipe.value.prepTime}M`,
-      recipeYield: `${recipe.value.servings} Portionen`,
+      author: definePerson({
+        name: 'Samuel Reichör',
+        image: 'https://fit-kitchen.at/authors/samuel-reichoer.webp',
+        url: '/ueber-uns'
+      }),
+      datePublished: recipe.value.date,
+      // prepTime in content is the total time shown on the page
+      totalTime: `PT${recipe.value.prepTime}M`,
+      recipeYield: `${recipe.value.servings}`,
       recipeIngredient: recipe.value.ingredients?.map(i => `${i.amount} ${i.unit} ${i.name}`),
+      recipeInstructions: extractRecipeSteps(recipe.value.body),
       recipeCategory: 'Main course',
-      nutrition: {
-        '@type': 'NutritionInformation',
-        'calories': `${recipe.value.macros?.kcal} kcal`,
-        'proteinContent': `${recipe.value.macros?.protein} g`,
-        'carbohydrateContent': `${recipe.value.macros?.carbs} g`,
-        'fatContent': `${recipe.value.macros?.fat} g`
-      }
+      keywords: recipeKeywords(recipe.value.title, recipe.value.category),
+      suitableForDiet: recipe.value.category.includes('vegetarisch') ? ['VegetarianDiet'] : undefined,
+      nutrition: typeof macros?.kcal === 'number'
+        ? {
+            '@type': 'NutritionInformation',
+            'servingSize': '1 Portion',
+            'calories': `${macros.kcal} kcal`,
+            'proteinContent': typeof macros.protein === 'number' ? `${macros.protein} g` : undefined,
+            'carbohydrateContent': typeof macros.carbs === 'number' ? `${macros.carbs} g` : undefined,
+            'fatContent': typeof macros.fat === 'number' ? `${macros.fat} g` : undefined
+          }
+        : undefined
     })
   ])
 }
