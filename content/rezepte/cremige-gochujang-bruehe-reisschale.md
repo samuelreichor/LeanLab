@@ -9,10 +9,10 @@ prepTime: 25
 difficulty: leicht
 servings: 2
 macros:
-  kcal: null
-  protein: null
-  carbs: null
-  fat: null
+  kcal: 1027
+  protein: 90
+  carbs: 103
+  fat: 26
 ingredients:
   - name: "Rinderknochenbrühe"
     amount: 711

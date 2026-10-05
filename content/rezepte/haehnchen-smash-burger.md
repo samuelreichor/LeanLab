@@ -9,10 +9,10 @@ prepTime: 25
 difficulty: leicht
 servings: 4
 macros:
-  kcal: null
-  protein: null
-  carbs: null
-  fat: null
+  kcal: 415
+  protein: 31
+  carbs: 34
+  fat: 17
 ingredients:
   - name: "Hähnchenschenkel (ohne Knochen und Haut)"
     amount: 300
